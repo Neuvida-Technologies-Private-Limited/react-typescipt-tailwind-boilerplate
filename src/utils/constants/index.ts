@@ -1,4 +1,4 @@
-export enum Login {
+export enum LoginConst {
     Login = "Login",
     EnterDetails = "Enter your details",
     Email = "Email",

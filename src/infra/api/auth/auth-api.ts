@@ -24,4 +24,15 @@ export const Signin = async (model: SigninModel) => {
     return Promise.reject(error);
   });
 }
+//  Make a Password Verification POST request
+export const VerifyUser = async (): Promise<Boolean> => {
+
+  await axiosClientProtected.get(authRoutes.VERIFY_USER).then((response) => {
+  }).catch((error: AxiosError) => {
+    return Promise.reject(false)
+  });
+
+  return Promise.resolve(true)
+}
+
 

@@ -7,7 +7,7 @@ interface InputProps {
   placeholder: string;
   required?: boolean;
   className?: string;
-  onChange?: (value: string) => void;
+  onChange : (value: string) => void;
   value?: string;
   error?: string;
 }
@@ -23,9 +23,9 @@ const input: React.FC<InputProps> = ({
   value,
   error,
 }) => {
-//   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     onChange(event.target.value);
-//   };
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(event.target.value);
+  };
   const errorClassName = error ? 'border-red-500 focus:ring-red-500' : 'focus:ring-indigo-600';
 
   return (
@@ -38,7 +38,7 @@ const input: React.FC<InputProps> = ({
         required={required}
         className={`${className} ${errorClassName} transition-all block rounded-md border p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-poppins`}
         value={value}
-        // onChange={handleChange}
+        onChange={handleChange}
       />
       <div>
         <label className="font-poppins text-xs text-red-500 font-semibold transition-all translate-y-1.5">{error}</label>
