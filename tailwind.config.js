@@ -21,6 +21,12 @@ module.exports = {
         internationalOrange: "#f94514",
         activeBlue: "#246DEF",
       },
+      screens: {
+        sm: "300px",
+        em: "600px",
+        md: "960px",
+        lg: "1440px",
+      },
     },
   },
   plugins: [],
