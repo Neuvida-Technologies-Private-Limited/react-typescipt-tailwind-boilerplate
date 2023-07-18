@@ -16,10 +16,13 @@ export const Signin = async (model: SigninModel) => {
     // Extract tokens
     const access_token = response.data.access_token;
     const refresh_token = response.data.refresh_token;
+    const user_type_token = response.data.user_type;
 
     // Set token in localstorage
     SetStorage(TOKENS.ACCESS_TOKEN, access_token);
     SetStorage(TOKENS.REFRESH_TOKEN, refresh_token);
+    SetStorage(TOKENS.USER_TYPE_TOKEN, user_type_token);
+
   }).catch((error: AxiosError) => {
     return Promise.reject(error);
   });

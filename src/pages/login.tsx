@@ -2,9 +2,10 @@ import React from "react";
 import { useRecoilState, useResetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { GetStorage } from "../infra/cache";
 import "react-toastify/dist/ReactToastify.css";
 //constants
-import { LoginConst } from "../utils/constants";
+import { LoginConst, TOKENS } from "../utils/constants";
 // components
 import { Button, Input, Label, Dropdown } from "../components/common";
 //APIs
@@ -60,7 +61,14 @@ const Login: React.FC = () => {
 
     try {
       await Signin(loginParams);
-      navigate("/");
+      const user_type_token: string | null = GetStorage(TOKENS.USER_TYPE_TOKEN);
+      if (user_type_token === "USER911") {
+        navigate("/user");
+      } else if (user_type_token === "FIREFIGHTER") {
+        navigate("/firefighter");
+      } else if (user_type_token === "DISPATCH_CENTER") {
+        navigate("/dispatch_center");
+      }
     } catch (error: any) {
       const errorMessage = error.error.message;
       toast.warn(errorMessage);
@@ -70,8 +78,8 @@ const Login: React.FC = () => {
     setState((old) => ({
       ...old,
       isLoading: false,
-      resetLoginState,
     }));
+    resetLoginState();
   };
   return (
     <div className="flex items-center flex-col justify-center w-full h-screen">
@@ -114,6 +122,7 @@ const Login: React.FC = () => {
                 value={password}
                 error={passwordError}
               />
+              <Label name={LoginConst.Role} className="mt-4" />
               <Dropdown />
               <Button
                 name="Submit"

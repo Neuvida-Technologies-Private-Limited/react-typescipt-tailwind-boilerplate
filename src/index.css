@@ -8,3 +8,8 @@ body {
 .ant-space-item {
   width: 100%;
 }
+.ant-select-selector {
+  padding: 8px !important;
+  height: auto !important;
+  border: 2px solid #9f9f9f !important;
+}
