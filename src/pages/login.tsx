@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 //constants
 import { LoginConst } from "../utils/constants";
 // components
-import { Button, Input, Label } from "../components/common";
+import { Button, Input, Label, Dropdown } from "../components/common";
 //APIs
 import { Signin } from "../infra/api/auth";
 //validations
@@ -74,7 +74,7 @@ const Login: React.FC = () => {
     }));
   };
   return (
-    <div className="flex items-center flex-col justify-center w-full h-full">
+    <div className="flex items-center flex-col justify-center w-full h-screen">
       <div className="flex flex-col justify-center px-6 py-24 lg:px-12 items-center w-full min-h-screen ">
         <div className="flex flex-col pb-12 rounded-3xl bg-white max-w-fit sm:px-8 md:px-14 lg:px-14 shadow-2xl">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm m-0 ">
@@ -114,6 +114,7 @@ const Login: React.FC = () => {
                 value={password}
                 error={passwordError}
               />
+              <Dropdown />
               <Button
                 name="Submit"
                 className="md:py-4 sm:py-2 mt-4 bg-vividTangerine hover:bg-internationalOrange hover:shadow-orange-200 hover:shadow-lg transition text-white"
