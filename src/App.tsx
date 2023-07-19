@@ -6,6 +6,7 @@ import Login from "./pages/login";
 import User from "./pages/user";
 import FireFighter from "./pages/fireFighter";
 import DispatchCenter from "./pages/dispatchCenter";
+import { UserReport, UserHistory, UserProfile } from "./components/helpers";
 import PrivateRoutes from "./utils/PrivateRoutes/PrivateRoutes";
 import "./App.css";
 
@@ -16,15 +17,27 @@ function App() {
         <Router>
           <Routes>
             <Route element={<PrivateRoutes roleRequired="USER911" />}>
-              <Route element={<User />} path="/user" />
+              <Route element={<User />} path="/user">
+                <Route element={<UserReport />} path="/user" />
+                <Route element={<UserHistory />} path="/user/history" />
+                <Route element={<UserProfile />} path="/user/profile" />
+              </Route>
             </Route>
             <Route element={<PrivateRoutes roleRequired="FIREFIGHTER" />}>
-              <Route element={<FireFighter />} path="/firefighter" />
+              <Route element={<FireFighter />} path="/firefighter" >
+                <Route element={<UserReport />} path="/firefighter" />
+                <Route element={<UserHistory />} path="/firefighter/history" />
+                <Route element={<UserProfile />} path="/firefighter/profile" />
+                </Route>
             </Route>
             <Route element={<PrivateRoutes roleRequired="DISPATCH_CENTER" />}>
-              <Route element={<DispatchCenter />} path="/dispatch_center" />
+              <Route element={<DispatchCenter />} path="/dispatch_center">
+              <Route element={<UserReport />} path="/dispatch_center" />
+                <Route element={<UserHistory />} path="/dispatch_center/history" />
+                <Route element={<UserProfile />} path="/dispatch_center/profile" />
+              </Route>
             </Route>
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
           </Routes>
         </Router>
       </RecoilRoot>
