@@ -15,11 +15,16 @@ import { isEmailValidated, isPasswordValidated } from "../utils/validations";
 // login state
 import { loginState } from "../infra/state";
 
+const options = [
+  { value: 'user911', label: 'User' },
+  { value: 'fire-fighter', label: 'Fire Fighter' },
+  { value: 'Dispatch Center', label: 'Dispatch Center' },
+]
+
 const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const [state, setState] = useRecoilState(loginState);
-
   // destructuring params
   const { email, emailError, password, passwordError } = state;
 
@@ -95,7 +100,7 @@ const Login: React.FC = () => {
           </div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form
-              className="lg:w-96 md:w-80 sm:64"
+              className="login lg:w-96 md:w-80 sm:64"
               action="#"
               method="POST"
               onSubmit={submitHandler}
@@ -123,7 +128,7 @@ const Login: React.FC = () => {
                 error={passwordError}
               />
               <Label name={LoginConst.Role} className="mt-4" />
-              <Dropdown />
+              <Dropdown options={options}/>
               <Button
                 name="Submit"
                 className="md:py-4 sm:py-2 mt-4 bg-vividTangerine hover:bg-internationalOrange hover:shadow-orange-200 hover:shadow-lg transition text-white"

@@ -1,25 +1,27 @@
-import React from 'react'
-import {Space} from 'antd'
-import { Header, Footer, SideBar } from '../components/common'
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import { Header, Footer, SideBar } from "../components/common";
+import { Outlet } from "react-router-dom";
 
 const items = [
-  {key: '/dispatch_center', label: 'Report an Incident'},
-  {key: '/dispatch_center/history', label: 'History'},
-  {key: '/dispatch_center/profile', label: 'Profile'},
+  { key: "/dispatch_center", label: "Report an Incident" },
+  { key: "/dispatch_center/history", label: "History" },
+  { key: "/dispatch_center/profile", label: "Profile" },
 ];
 
-const DispatchCenter:React.FC = () => {
+const DispatchCenter: React.FC = () => {
   return (
-    <div className='flex flex-col justify-between h-screen'>
-    <Header src="/assets/icons/avatar.svg" heading="Dispatch Center's Dashboard"/>
-    <Space className='flex justify-start items-start '>
-      <SideBar items={items}/>
-      <Outlet />
-    </Space>
-    <Footer />
+    <div className="flex flex-col justify-between h-screen">
+      <Header
+        src="/assets/icons/avatar.svg"
+        heading="Dispatch Center's Dashboard"
+      />
+      <div className="flex">
+        <SideBar items={items} />
+        <Outlet />
+      </div>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default DispatchCenter
+export default DispatchCenter;
