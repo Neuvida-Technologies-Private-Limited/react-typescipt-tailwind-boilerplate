@@ -8,8 +8,12 @@ body {
 .login .ant-space-item {
   width: 100%;
 }
-.ant-select-selector {
+.login .ant-select-selector {
   padding: 8px !important;
   height: auto !important;
   border: 2px solid #9f9f9f !important;
+}
+.user .ant-select-selector {
+  border: 1px solid #9f9f9f !important;
+  width: 15rem !important;
 }

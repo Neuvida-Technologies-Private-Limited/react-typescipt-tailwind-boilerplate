@@ -8,17 +8,18 @@ interface OptionItems {
 
 interface DropdownProps {
 options: OptionItems[],
+placeholder: string,
 }
 
 const handleChange = (value: string) => {
   // console.log(`selected ${value}`);
 };
 
-const Dropdown: React.FC<DropdownProps> = ({options}) => (
+const Dropdown: React.FC<DropdownProps> = ({options, placeholder}) => (
   <Space wrap className='flex mt-4' >
     <Select
-      placeholder = "Select Your Role"
-      className='w-full '
+      placeholder = {placeholder}
+      className='w-full'
       onChange={handleChange}
       options={options}
     />

@@ -105,30 +105,30 @@ const Login: React.FC = () => {
               method="POST"
               onSubmit={submitHandler}
             >
-              <Label name={LoginConst.Email} />
+              <Label name={LoginConst.Email} className=" text-sm font-medium" />
               <Input
                 id="email"
                 name="email"
                 type="text"
                 placeholder="johndoeatdesign@xyz.com"
-                className="w-full mt-4"
+                className="w-full mt-4 border-2 border-gray-400 p-3"
                 onChange={handleEmailChange}
                 value={email}
                 error={emailError}
               />
-              <Label name={LoginConst.Password} className="mt-4" />
+              <Label name={LoginConst.Password} className="mt-4  text-sm font-medium" />
               <Input
                 id="password"
                 name="password"
                 type="password"
                 placeholder="******"
-                className="w-full mt-4"
+                className="w-full mt-4 border-2 border-gray-400 p-3"
                 onChange={handlePasswordChange}
                 value={password}
                 error={passwordError}
               />
-              <Label name={LoginConst.Role} className="mt-4" />
-              <Dropdown options={options}/>
+              <Label name={LoginConst.Role} className="mt-4  text-sm font-medium" />
+              <Dropdown options={options} placeholder="Select the role"/>
               <Button
                 name="Submit"
                 className="md:py-4 sm:py-2 mt-4 bg-vividTangerine hover:bg-internationalOrange hover:shadow-orange-200 hover:shadow-lg transition text-white"

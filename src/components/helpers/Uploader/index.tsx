@@ -1,11 +1,13 @@
 import React, { useRef, useState } from "react";
 import { MdCloudUpload, MdDelete } from "react-icons/md";
 import { AiFillFileImage } from "react-icons/ai";
+import { UserReport } from "../../../utils/constants";
 
 const Uploader: React.FC = () => {
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [image, setImage] = useState<string | null>(null);
-  const [fileName, setFileName] = useState<string>("No selected file");
+  const [fileName, setFileName] = useState<string>(UserReport.NoSelected);
 
   const handleClick = () => {
     if (fileInputRef.current) {
@@ -21,7 +23,7 @@ const Uploader: React.FC = () => {
   };
   const handleDeleteClick = () => {
     setImage("");
-    setFileName("No selected file");
+    setFileName(UserReport.NoSelected);
   };
 
   return (
@@ -29,7 +31,7 @@ const Uploader: React.FC = () => {
       <form
         action=""
         onClick={handleClick}
-        className="flex flex-col justify-center items-center border-dashed border-blue-500 border-2 rounded-lg cursor-pointer h-64 w-96"
+        className="flex flex-col justify-center items-center border-dashed border-blue-500 border-2 rounded-lg cursor-pointer h-56 w-72"
       >
         <input
           type="file"
@@ -44,17 +46,18 @@ const Uploader: React.FC = () => {
           <MdCloudUpload color="#1475cf" size={50} />
         )}
       </form>
-      <div className="flex pt-2 gap-4">
-        <AiFillFileImage color="#1475cf" size={20} />
-        <span className="flex font-poppins justify-between">
-          {fileName}
-          <MdDelete
+      <div className="flex pt-2 gap-2 w-72 justify-between mt-2 bg-blue-100 rounded-md p-2 items-center">
+        <AiFillFileImage color="#1475cf" className="w-10" size={20} />
+        <span className="flex font-poppins text-xs items-center overflow-hidden">
+          <p className=" w-full">{fileName}</p>
+          
+        </span>
+        <MdDelete
             color="#1475cf"
             size={20}
-            className="cursor-pointer ml-4"
+            className="cursor-pointer w-10"
             onClick={handleDeleteClick}
           />
-        </span>
       </div>
     </div>
   );

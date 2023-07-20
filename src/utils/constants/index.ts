@@ -23,3 +23,9 @@ export enum Logout {
 export enum FooterConst {
   Love = "Made with ❤️",
 }
+export enum UserReport {
+  NoSelected = "No selected file",
+  Incident = "Report an Incident : ",
+  UploadImage = "Upload Image :",
+  Location = "Location :"
+}
