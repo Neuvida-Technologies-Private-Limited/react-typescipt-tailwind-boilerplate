@@ -9,14 +9,15 @@ interface OptionItems {
 interface DropdownProps {
 options: OptionItems[],
 placeholder: string,
+className ?:string
 }
 
 const handleChange = (value: string) => {
   // console.log(`selected ${value}`);
 };
 
-const Dropdown: React.FC<DropdownProps> = ({options, placeholder}) => (
-  <Space wrap className='flex mt-4' >
+const Dropdown: React.FC<DropdownProps> = ({options, placeholder, className}) => (
+  <Space wrap className={`flex mt-4 ${className}`}  >
     <Select
       placeholder = {placeholder}
       className='w-full'

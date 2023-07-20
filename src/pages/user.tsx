@@ -3,7 +3,7 @@ import { Header, Footer, SideBar } from "../components/common";
 import { Outlet } from "react-router-dom";
 
 const items = [
-  { key: "/user", label: "Report an Incident" },
+  { key: "/user", label: "Create a ticket" },
   { key: "/user/history", label: "History" },
   { key: "/user/profile", label: "Profile" },
 ];

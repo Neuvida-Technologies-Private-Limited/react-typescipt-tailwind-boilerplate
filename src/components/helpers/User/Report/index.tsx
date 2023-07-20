@@ -1,6 +1,6 @@
 import React from "react";
 import { Uploader } from "../../index";
-import { Dropdown, Input, Label, TextArea } from "../../../common";
+import { Button, Dropdown, Label, TextArea } from "../../../common";
 import { UserReport } from "../../../../utils/constants";
 
 const options = [
@@ -10,28 +10,40 @@ const options = [
 ];
 
 const Report: React.FC = () => {
-  function handleLocationChange(value: string): void {
-    throw new Error("Function not implemented.");
-  }
+  function handleLocationChange(value: string): void {}
 
   return (
+    <form action="" method="post">
     <div className="flex w-5/6 flex-col gap-5 pl-4">
-      <div className="user w-full flex items-center gap-4">
-        <Label name={UserReport.Incident} className="mt-4 font-bold text-md" />
-        <Dropdown options={options} placeholder="Select the type of fire" />
+      <div className="user w-full flex">
+        <Label
+          name={UserReport.Incident}
+          className="mt-4 font-bold text-md w-1/4"
+        />
+        <Dropdown
+          options={options}
+          placeholder="Select the type of fire"
+          className="w-3/4"
+        />
       </div>
-      <div>
+      <div className="flex w-full">
         <Label
           name={UserReport.UploadImage}
-          className="mt-4 font-bold text-md"
+          className="font-bold text-md w-1/4"
         />
         <Uploader />
       </div>
-      <div className="flex mt-6">
-        <Label name={UserReport.Location} className="font-bold text-md" />
-        <TextArea className="w-2/3 border border-gray-400 rounded-lg p-3 text-xs font-poppins h-24 ml-4"/>
+      <div className="flex w-full">
+        <Label name={UserReport.Location} className="font-bold text-md w-1/4" />
+        <TextArea className="w-3/4 pr-4" />
+      </div>
+      <div className="flex w-full justify-end">
+        <div className="w-3/4">
+          <Button name={"Create"} className="text-white bg-green-500 w-1/4 p-2 hover:shadow-md hover:bg-green-600 hover:shadow-green-300 transition-all ease-in-out duration-300" />
+        </div>
       </div>
     </div>
+    </form>
   );
 };
 
