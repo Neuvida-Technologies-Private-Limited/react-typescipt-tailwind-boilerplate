@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { GetStorage } from "../infra/cache";
 import "react-toastify/dist/ReactToastify.css";
 //constants
-import { LoginConst, TOKENS } from "../utils/constants";
+import { LoginConst, TOKENS, USERS } from "../utils/constants";
 // components
 import { Button, Input, Label, Dropdown } from "../components/common";
 //APIs
@@ -62,11 +62,11 @@ const Login: React.FC = () => {
     try {
       await Signin(loginParams);
       const user_type_token: string | null = GetStorage(TOKENS.USER_TYPE_TOKEN);
-      if (user_type_token === "USER911") {
+      if (user_type_token === USERS.User) {
         navigate("/user");
-      } else if (user_type_token === "FIREFIGHTER") {
+      } else if (user_type_token === USERS.FireFighter) {
         navigate("/firefighter");
-      } else if (user_type_token === "DISPATCH_CENTER") {
+      } else if (user_type_token === USERS.DispatchCenter) {
         navigate("/dispatch_center");
       }
     } catch (error: any) {

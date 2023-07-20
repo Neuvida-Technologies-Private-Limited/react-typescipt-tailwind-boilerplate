@@ -7,6 +7,11 @@ export enum LoginConst {
   NewPassword = "New Password",
   Role = "Select Your Role",
 }
+export enum USERS {
+  User = "USER911",
+  FireFighter = "FIREFIGHTER",
+  DispatchCenter = "DISPATCH_CENTER"
+}
 export enum TOKENS {
   ACCESS_TOKEN = "access_token",
   REFRESH_TOKEN = "refresh_token",
