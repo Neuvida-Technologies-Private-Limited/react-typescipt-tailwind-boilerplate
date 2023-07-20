@@ -17,7 +17,7 @@ const handleChange = (value: string) => {
 };
 
 const Dropdown: React.FC<DropdownProps> = ({options, placeholder, className}) => (
-  <Space wrap className={`flex mt-4 ${className}`}  >
+  <Space wrap className={`flex ${className}`}  >
     <Select
       placeholder = {placeholder}
       className='w-full'

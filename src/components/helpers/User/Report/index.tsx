@@ -14,10 +14,14 @@ const Report: React.FC = () => {
 
   return (
     <form action="" method="post" className="flex w-5/6 flex-col gap-5 pl-4">
-      <div className="user w-full flex">
+      <Label
+        name={UserReport.CreateTicket}
+        className="font-bold text-xl text-blue-700 w-1/4 mt-4"
+      />
+      <div className="user w-full flex items-start">
         <Label
           name={UserReport.Incident}
-          className="mt-4 font-bold text-md w-1/4"
+          className="font-bold text-sm w-1/4"
         />
         <Dropdown
           options={options}
@@ -28,12 +32,12 @@ const Report: React.FC = () => {
       <div className="flex w-full">
         <Label
           name={UserReport.UploadImage}
-          className="font-bold text-md w-1/4"
+          className="font-bold text-sm w-1/4"
         />
         <Uploader />
       </div>
       <div className="flex w-full">
-        <Label name={UserReport.Location} className="font-bold text-md w-1/4" />
+        <Label name={UserReport.Location} className="font-bold text-sm w-1/4" />
         <TextArea className="w-3/4 pr-4" />
       </div>
       <div className="flex w-full justify-end">

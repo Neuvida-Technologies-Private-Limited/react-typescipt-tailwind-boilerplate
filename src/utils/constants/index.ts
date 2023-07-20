@@ -24,8 +24,16 @@ export enum FooterConst {
   Love = "Made with ❤️",
 }
 export enum UserReport {
+  CreateTicket = "Create a ticket ~ ",
   NoSelected = "No selected file",
   Incident = "Report an Incident : ",
   UploadImage = "Upload Image :",
   Location = "Location :"
+}
+export enum UserHistory {
+  History = "History ~",
+  Refresh = "Refresh"
+}
+export enum UserProfile {
+  Profile = "Profile ~",
 }

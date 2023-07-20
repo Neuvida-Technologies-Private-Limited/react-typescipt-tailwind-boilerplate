@@ -31,7 +31,7 @@ const Uploader: React.FC = () => {
       <form
         action=""
         onClick={handleClick}
-        className="flex flex-col justify-center items-center border-dashed border-blue-500 border-2 rounded-lg cursor-pointer h-56 w-72"
+        className="flex flex-col justify-center items-center border-dashed border-blue-500 border-2 rounded-lg cursor-pointer h-48 w-72"
       >
         <input
           type="file"
