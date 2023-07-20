@@ -131,7 +131,7 @@ const Login: React.FC = () => {
               <Dropdown options={options} placeholder="Select the role"/>
               <Button
                 name="Submit"
-                className="md:py-4 sm:py-2 mt-4 bg-vividTangerine hover:bg-internationalOrange hover:shadow-orange-200 hover:shadow-lg transition text-white"
+                className="md:py-4 sm:py-2 w-full mt-4 bg-vividTangerine hover:bg-internationalOrange hover:shadow-orange-200 hover:shadow-lg transition text-white"
               />
             </form>
           </div>

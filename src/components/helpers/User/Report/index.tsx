@@ -13,8 +13,7 @@ const Report: React.FC = () => {
   function handleLocationChange(value: string): void {}
 
   return (
-    <form action="" method="post">
-    <div className="flex w-5/6 flex-col gap-5 pl-4">
+    <form action="" method="post" className="flex w-5/6 flex-col gap-5 pl-4">
       <div className="user w-full flex">
         <Label
           name={UserReport.Incident}
@@ -39,10 +38,12 @@ const Report: React.FC = () => {
       </div>
       <div className="flex w-full justify-end">
         <div className="w-3/4">
-          <Button name={"Create"} className="text-white bg-green-500 w-1/4 p-2 hover:shadow-md hover:bg-green-600 hover:shadow-green-300 transition-all ease-in-out duration-300" />
+          <Button
+            name={"Create"}
+            className="text-white bg-green-500 w-1/4 p-2 hover:shadow-md hover:bg-green-600 hover:shadow-green-300 transition-all ease-in-out duration-300"
+          />
         </div>
       </div>
-    </div>
     </form>
   );
 };
