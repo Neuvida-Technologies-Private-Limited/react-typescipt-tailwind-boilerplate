@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
   background-color: rgba(218, 218, 218, 0.301);
-} 
+}
+.ant-space-item {
+  width: 100%;
+}
+.ant-select-selector {
+  padding: 8px !important;
+  height: auto !important;
+  border: 2px solid #9f9f9f !important;
+}
