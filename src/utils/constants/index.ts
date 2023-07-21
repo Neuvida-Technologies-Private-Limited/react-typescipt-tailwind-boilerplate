@@ -36,4 +36,8 @@ export enum UserHistory {
 }
 export enum UserProfile {
   Profile = "Profile ~",
+  Name = "Name :",
+  Email = "Email :",
+  Joe = "John Joe",
+  UserEmail = "johndoe@gmail.com"
 }

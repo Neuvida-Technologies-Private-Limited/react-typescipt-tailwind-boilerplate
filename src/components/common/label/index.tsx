@@ -11,7 +11,7 @@ const Label: React.FC<InputProps> = ({
 }) => {
 
   return (
-    <label className={`${className} block leading-6 font-poppins mb-2`}>
+    <label className={`${className} block font-poppins mb-2`}>
         {name}
     </label>       
   );
