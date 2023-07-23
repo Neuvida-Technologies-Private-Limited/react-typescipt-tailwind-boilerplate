@@ -10,3 +10,4 @@ export { default as TextArea } from "./textarea";
 export { default as IconButton } from "./icon-button";
 export { default as ActiveTable } from "./tables/activeTable";
 export { default as InActiveTable } from "./tables/inActiveTable";
+export { default as DispatchTable } from "./tables/dispatchTable";

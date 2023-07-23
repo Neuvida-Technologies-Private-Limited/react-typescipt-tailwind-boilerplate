@@ -1,9 +1,8 @@
 export { default as UserReport } from "./User/Report";
 export { default as FireFighterReport } from "./FireFighter/Report";
-export { default as DispatchCenterReport } from "./DispatchCenter/Report";
+export { default as DispatchCenterDashboard } from "./DispatchCenter/Dashboard";
 export { default as UserHistory } from "./User/History";
 export { default as FireFighterHistory } from "./FireFighter/History";
-export { default as DispatchCenterHistory } from "./DispatchCenter/History";
 export { default as UserProfile } from "./User/Profile";
 export { default as FireFighterProfile } from "./FireFighter/Profile";
 export { default as DispatchCenterProfile } from "./DispatchCenter/Profile";

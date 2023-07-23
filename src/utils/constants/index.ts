@@ -41,3 +41,8 @@ export enum UserProfile {
   Joe = "John Joe",
   UserEmail = "johndoe@gmail.com"
 }
+export enum DispatchDashboard {
+  Dashboard = "Dashboard ~",
+  Profile = "Profile ~",
+  Select = "Select the Status",
+}

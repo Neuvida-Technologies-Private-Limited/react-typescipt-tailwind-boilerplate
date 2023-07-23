@@ -17,3 +17,10 @@ body {
   border: 1px solid #9f9f9f !important;
   width: 13.5rem !important;
 }
+table {
+  font-family: 'Poppins';
+}
+.ant-select-selection-placeholder {
+  font-family: 'Poppins';
+  color: rgb(194, 194, 194) !important;
+}

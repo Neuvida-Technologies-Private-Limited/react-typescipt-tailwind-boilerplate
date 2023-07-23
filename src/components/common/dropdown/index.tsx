@@ -20,7 +20,7 @@ const Dropdown: React.FC<DropdownProps> = ({options, placeholder, className}) =>
   <Space wrap className={`flex ${className}`}  >
     <Select
       placeholder = {placeholder}
-      className='w-full'
+      className='w-full font-poppins'
       onChange={handleChange}
       options={options}
     />

@@ -6,7 +6,7 @@ import Login from "./pages/login";
 import User from "./pages/user";
 import FireFighter from "./pages/fireFighter";
 import DispatchCenter from "./pages/dispatchCenter";
-import { UserReport, UserHistory, UserProfile, DispatchCenterReport,FireFighterReport, FireFighterHistory, FireFighterProfile, DispatchCenterHistory, DispatchCenterProfile } from "./components/helpers";
+import { UserReport, UserHistory, UserProfile, DispatchCenterDashboard,FireFighterReport, FireFighterHistory, FireFighterProfile,  DispatchCenterProfile } from "./components/helpers";
 import PrivateRoutes from "./utils/PrivateRoutes/PrivateRoutes";
 import "./App.css";
 
@@ -32,8 +32,7 @@ function App() {
             </Route>
             <Route element={<PrivateRoutes roleRequired="DISPATCH_CENTER" />}>
               <Route element={<DispatchCenter />} path="/dispatch_center">
-              <Route element={<DispatchCenterReport />} path="/dispatch_center" />
-                <Route element={<DispatchCenterHistory />} path="/dispatch_center/history" />
+              <Route element={<DispatchCenterDashboard />} path="/dispatch_center" />
                 <Route element={<DispatchCenterProfile />} path="/dispatch_center/profile" />
               </Route>
             </Route>
