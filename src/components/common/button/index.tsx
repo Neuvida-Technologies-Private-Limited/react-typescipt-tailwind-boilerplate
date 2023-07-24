@@ -10,7 +10,7 @@ const button: React.FC<ButtonProps> = ({className, name}) => {
     <button
       type="submit"
       className={`${className} 
-        flex w-full justify-center 
+        flex justify-center 
         rounded-md  
         md:px-2 text-sm font-semibold 
         leading-6 shadow-sm 

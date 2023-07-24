@@ -13,7 +13,7 @@ interface SideBarProps {
 const Sidebar: React.FC<SideBarProps> = ({ items }) => {
   const navigate = useNavigate();
   return (
-    <div className="w-fit border-r-2 bg-white h-perfect">
+    <div className="w-1/6 border-r-2 bg-white h-perfect">
       <Menu className="font-poppins" onClick={(item) => {
         navigate(item.key);
       }} items={items} />
