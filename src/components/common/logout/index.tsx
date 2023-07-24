@@ -12,9 +12,9 @@ const index: React.FC = () => {
 
   return (
     <Link
-      to={"/login"}
+      to={"/"}
       onClick={HandleClick}
-      className="p-2 bg-gray-300 rounded-md font-poppins w-fit cursor-pointer"
+      className="py-2 px-4 bg-gray-300 rounded-md font-poppins w-fit cursor-pointer hover:shadow-md hover:shadow-blue-300 transition-all duration-200"
     >
       {Logout.Logout}
     </Link>

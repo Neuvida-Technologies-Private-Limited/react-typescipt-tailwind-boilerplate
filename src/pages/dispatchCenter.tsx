@@ -1,12 +1,24 @@
 import React from 'react'
-import { Logout } from '../components/common'
+import {Space} from 'antd'
+import { Header, Footer, SideBar } from '../components/common'
+import { Outlet } from 'react-router-dom';
+
+const items = [
+  {key: '/dispatch_center', label: 'Report an Incident'},
+  {key: '/dispatch_center/history', label: 'History'},
+  {key: '/dispatch_center/profile', label: 'Profile'},
+];
 
 const DispatchCenter:React.FC = () => {
   return (
-    <>
-    <h1 className='mb-2'>Welcome Dispatch Center !</h1>
-    <Logout />
-    </>
+    <div className='flex flex-col justify-between h-screen'>
+    <Header src="/assets/icons/avatar.svg" heading="Dispatch Center's Dashboard"/>
+    <Space className='flex justify-start items-start '>
+      <SideBar items={items}/>
+      <Outlet />
+    </Space>
+    <Footer />
+    </div>
   )
 }
 

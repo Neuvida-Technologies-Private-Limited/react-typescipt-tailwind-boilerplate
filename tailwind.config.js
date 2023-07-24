@@ -27,6 +27,9 @@ module.exports = {
         md: "960px",
         lg: "1440px",
       },
+      height: {
+        perfect: "82.8vh",
+      }
     },
   },
   plugins: [],

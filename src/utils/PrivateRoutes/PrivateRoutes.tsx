@@ -30,7 +30,7 @@ const PrivateRoutes: React.FC<PrivateRoutesProps> = ({ roleRequired }) => {
   return auth && roleRequired === user_type ? (
     <Outlet />
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/" />
   );
 };
 

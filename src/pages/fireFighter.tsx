@@ -1,12 +1,24 @@
 import React from 'react'
-import { Logout } from '../components/common'
+import {Space} from 'antd'
+import { Header, Footer, SideBar } from '../components/common'
+import { Outlet } from 'react-router-dom';
+
+const items = [
+  {key: '/firefighter', label: 'Report an Incident'},
+  {key: '/firefighter/history', label: 'History'},
+  {key: '/firefighter/profile', label: 'Profile'},
+];
 
 const FireFighter:React.FC = () => {
   return (
-    <>
-    <h1 className='mb-2'>Welcome Fire Fighter !</h1>
-    <Logout />
-    </>
+    <div className='flex flex-col justify-between h-screen'>
+    <Header src="/assets/icons/avatar.svg" heading="Fire Fighter's Dashboard"/>
+    <Space className='flex justify-start items-start '>
+      <SideBar items={items}/>
+      <Outlet />
+    </Space>
+    <Footer />
+    </div>
   )
 }
 
