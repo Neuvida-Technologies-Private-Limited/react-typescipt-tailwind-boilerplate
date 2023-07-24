@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import {Dropdown} from "../index";
+import {ConfirmDropdown} from "../index";
 import { Table } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import { DispatchDashboard } from "../../../utils/constants";
@@ -102,28 +102,28 @@ const data: DataType[] = [
     incident: "Fire in beginning",
     location: "",
     status: "Pending",
-    setStatus: <Dropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2"/>,
+    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2"/>,
   },
   {
     key: "2",
     incident: "Fire with smoke",
     location: "",
     status: "Pending",
-    setStatus: <Dropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2"/>,
+    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2"/>,
   },
   {
     key: "3",
     incident: "Extreme Fire",
     location: "",
     status: "Active",
-    setStatus: <Dropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2"/>,
+    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2"/>,
   },
   {
     key: "4",
     incident: "Fire with smoke",
     location: "",
     status: "Active",
-    setStatus: <Dropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2"/>,
+    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2"/>,
   },
 ];
 
