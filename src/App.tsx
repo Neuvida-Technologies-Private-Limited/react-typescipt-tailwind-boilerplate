@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// recoil for state management.
+import { RecoilRoot } from "recoil";
+import Login from "./pages/login";
+import User from "./pages/user";
+import FireFighter from "./pages/fireFighter";
+import DispatchCenter from "./pages/dispatchCenter";
+import PrivateRoutes from "./utils/PrivateRoutes/PrivateRoutes";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RecoilRoot>
+        <Router>
+          <Routes>
+            <Route element={<PrivateRoutes roleRequired="USER911" />}>
+              <Route element={<User />} path="/user" />
+            </Route>
+            <Route element={<PrivateRoutes roleRequired="FIREFIGHTER" />}>
+              <Route element={<FireFighter />} path="/firefighter" />
+            </Route>
+            <Route element={<PrivateRoutes roleRequired="DISPATCH_CENTER" />}>
+              <Route element={<DispatchCenter />} path="/dispatch_center" />
+            </Route>
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </Router>
+      </RecoilRoot>
     </div>
   );
 }
