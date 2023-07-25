@@ -34,7 +34,6 @@ const History = () => {
         ...old,
         ticket_history: res.ticket_history,
       }));
-      console.log(ticket_history);
     } catch (error: any) {
       const errorMessage = error.error.message;
       toast.warn(errorMessage);
