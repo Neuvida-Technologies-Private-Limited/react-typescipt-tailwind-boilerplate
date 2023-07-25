@@ -4,7 +4,7 @@ import type { ColumnsType, TableProps } from "antd/es/table";
 
 interface DataType {
   key: React.Key;
-  incident: string;
+  report: string;
   location: string;
   status: string;
 }
@@ -12,11 +12,11 @@ interface DataType {
 const columns: ColumnsType<DataType> = [
   {
     title: "Incident",
-    dataIndex: "incident",
+    dataIndex: "report",
     filters: [
       {
-        text: "Fire in beginning",
-        value: "Fire in beginning",
+        text: "Fire in Beginning",
+        value: "Fire in Beginning",
       },
       {
         text: "Fire with smoke",
@@ -30,7 +30,7 @@ const columns: ColumnsType<DataType> = [
     filterMode: "tree",
     filterSearch: true,
     onFilter: (value: string | number | boolean, record: DataType) =>
-      record.incident.startsWith(String(value)),
+      record.report.startsWith(String(value)),
     width: "40%",
   },
   {
@@ -53,7 +53,7 @@ const columns: ColumnsType<DataType> = [
     filterMode: "tree",
     filterSearch: true,
     onFilter: (value: string | number | boolean, record: DataType) =>
-      record.incident.startsWith(String(value)),
+      record.location.startsWith(String(value)),
     width: "40%",
   },
   {
@@ -76,32 +76,9 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 
-const data: DataType[] = [
-  {
-    key: "1",
-    incident: "Fire in beginning",
-    location: "",
-    status: "Pending",
-  },
-  {
-    key: "2",
-    incident: "Fire with smoke",
-    location: "",
-    status: "Pending",
-  },
-  {
-    key: "3",
-    incident: "Extreme Fire",
-    location: "",
-    status: "Active",
-  },
-  {
-    key: "4",
-    incident: "Fire with smoke",
-    location: "",
-    status: "Active",
-  },
-];
+interface ActiveTableProp {
+  data: DataType[]
+}
 
 const onChange: TableProps<DataType>["onChange"] = (
   pagination,
@@ -110,7 +87,7 @@ const onChange: TableProps<DataType>["onChange"] = (
   extra
 ) => {};
 
-const Index: React.FC = () => (
+const Index: React.FC<ActiveTableProp> = ({data}) => (
   <Table
     columns={columns}
     dataSource={data}

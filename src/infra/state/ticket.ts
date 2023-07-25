@@ -8,6 +8,11 @@ export const createTicketState = atom({
     reportError:'',
     location: '',
     locationError: '',
-    status: '',
   }
+})
+export const ticketState = atom({
+    key: 'getTicket-state',
+    default: {
+        ticket_history: [],
+    }
 })

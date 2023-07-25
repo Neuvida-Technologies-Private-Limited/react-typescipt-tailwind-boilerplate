@@ -24,7 +24,7 @@ const options = [
 const Report: React.FC = () => {
   const [state, setState] = useRecoilState(createTicketState);
   // destructuring params
-  const { image, location, locationError, report, reportError, status } = state;
+  const { image, location, locationError, report, reportError } = state;
   // reseting the states
   const resetLoginState = useResetRecoilState(createTicketState);
 
@@ -62,8 +62,7 @@ const Report: React.FC = () => {
     try {
       await CreateTicket(createTicketParams);
       toast.success(UserReport.TicketCreated);
-
-    } catch (error:any) {
+    } catch (error: any) {
       const errorMessage = error.error.message;
       toast.warn(errorMessage);
     }

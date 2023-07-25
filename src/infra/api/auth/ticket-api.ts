@@ -7,9 +7,7 @@ import { ticketRoutes } from "./routes";
 export const CreateTicket = async (model: CreateTicketModel) => {
   await axiosClient
     .post(ticketRoutes.CREATE_TICKET_ROUTE, model)
-    .then((response) => {
-       
-    })
+    .then((response) => {})
     .catch((error: AxiosError) => {
       return Promise.reject(error);
     });
@@ -17,12 +15,10 @@ export const CreateTicket = async (model: CreateTicketModel) => {
 
 //get ticket
 export const GetTicket = async () => {
-  await axiosClient
-    .get(ticketRoutes.GET_TICKET_ROUTE)
-    .then((response) => {
-
-    })
-    .catch((error: AxiosError) => {
-      return Promise.reject(error);
-    });
+  try {
+    const response = await axiosClient.get(ticketRoutes.GET_TICKET_ROUTE)
+      return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
 };
