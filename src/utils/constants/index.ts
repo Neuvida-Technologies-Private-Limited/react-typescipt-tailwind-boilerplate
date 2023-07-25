@@ -28,7 +28,8 @@ export enum UserReport {
   NoSelected = "No selected file",
   Incident = "Report an Incident : ",
   UploadImage = "Upload Image :",
-  Location = "Location :"
+  Location = "Location :",
+  TicketCreated = "Ticket Created Successfully"
 }
 export enum UserHistory {
   History = "History ~",

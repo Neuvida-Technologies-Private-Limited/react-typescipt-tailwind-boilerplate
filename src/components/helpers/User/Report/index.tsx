@@ -61,6 +61,8 @@ const Report: React.FC = () => {
 
     try {
       await CreateTicket(createTicketParams);
+      toast.success(UserReport.TicketCreated);
+
     } catch (error:any) {
       const errorMessage = error.error.message;
       toast.warn(errorMessage);
