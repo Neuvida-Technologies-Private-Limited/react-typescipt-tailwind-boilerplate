@@ -42,7 +42,7 @@ const History = () => {
 
   useEffect(() => {
     handleRefresh();
-  }, []);
+  });
 
   return (
     <div className="px-4 py-2 w-5/6">

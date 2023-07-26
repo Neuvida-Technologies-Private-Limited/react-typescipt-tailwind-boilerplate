@@ -37,10 +37,10 @@ export enum UserHistory {
 }
 export enum UserProfile {
   Profile = "Profile ~",
-  Name = "Name :",
+  FirstName = "First Name :",
+  LastName = "Last Name :",
   Email = "Email :",
-  Joe = "John Joe",
-  UserEmail = "johndoe@gmail.com"
+  UserType = "User Type :"
 }
 export enum DispatchDashboard {
   Dashboard = "Dashboard ~",
