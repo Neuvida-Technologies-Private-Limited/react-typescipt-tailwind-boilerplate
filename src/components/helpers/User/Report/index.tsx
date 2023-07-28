@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRecoilState, useResetRecoilState } from "recoil";
@@ -23,8 +23,9 @@ const options = [
 
 const Report: React.FC = () => {
   const [state, setState] = useRecoilState(createTicketState);
+  const [image, setImage] = useState<File | null>(null);
   // destructuring params
-  const { image, location, locationError, report, reportError } = state;
+  const { location, locationError, report, reportError } = state;
   // reseting the states
   const resetLoginState = useResetRecoilState(createTicketState);
 
@@ -35,6 +36,10 @@ const Report: React.FC = () => {
       reportError: isReportValidated(report),
     }));
   };
+
+  const handleFileSelected = (image: File | null) => {
+    setImage(image);
+  }
 
   const handleLocationChange = (location: string) => {
     setState((old) => ({
@@ -53,15 +58,18 @@ const Report: React.FC = () => {
       emailError: isReportValidated(report),
       passwordError: isLocationValidated(location),
     }));
-
-    const createTicketParams = {
-      report,
-      location,
-    };
+    
+    const createTicketObj = new FormData();
+    createTicketObj.append('report', report);
+    createTicketObj.append('location', location);
+    if (image) {
+      createTicketObj.append('image', image);
+    }
 
     try {
-      await CreateTicket(createTicketParams);
+      await CreateTicket(createTicketObj);
       toast.success(UserReport.TicketCreated);
+      setImage(null);
     } catch (error: any) {
       const errorMessage = error.error.message;
       toast.warn(errorMessage);
@@ -97,7 +105,7 @@ const Report: React.FC = () => {
           name={UserReport.UploadImage}
           className="font-bold text-sm w-1/4"
         />
-        <Uploader />
+        <Uploader onFileSelected = {handleFileSelected}/>
       </div>
       <div className="flex w-full">
         <Label name={UserReport.Location} className="font-bold text-sm w-1/4" />

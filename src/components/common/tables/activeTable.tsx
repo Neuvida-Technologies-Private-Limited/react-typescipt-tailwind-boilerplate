@@ -5,6 +5,7 @@ import type { ColumnsType, TableProps } from "antd/es/table";
 interface DataType {
   key: React.Key;
   report: string;
+  image: File | null;
   location: string;
   status: string;
 }
@@ -31,6 +32,11 @@ const columns: ColumnsType<DataType> = [
     filterSearch: true,
     onFilter: (value: string | number | boolean, record: DataType) =>
       record.report.startsWith(String(value)),
+    width: "40%",
+  },
+  {
+    title: "Uploaded Image",
+    dataIndex: "user_image",
     width: "40%",
   },
   {

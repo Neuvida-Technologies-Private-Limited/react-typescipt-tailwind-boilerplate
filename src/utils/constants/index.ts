@@ -42,8 +42,14 @@ export enum UserProfile {
   Email = "Email :",
   UserType = "User Type :"
 }
+export enum FireFighterDashboard {
+  Dashboard = "Dashboard ~",
+  Assign = "Assign Dispatch Center",
+  Refresh = "Refresh"
+}
 export enum DispatchDashboard {
   Dashboard = "Dashboard ~",
   Profile = "Profile ~",
   Select = "Select the Status",
+  Refresh = "Refresh"
 }

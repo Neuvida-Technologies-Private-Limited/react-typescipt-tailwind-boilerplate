@@ -5,7 +5,7 @@
 body {
   background-color: rgba(218, 218, 218, 0.301);
 }
-.login .ant-space-item {
+.login  .ant-space-item {
   width: 100%;
 }
 .login .ant-select-selector {

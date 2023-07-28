@@ -3,10 +3,15 @@ import { MdCloudUpload, MdDelete } from "react-icons/md";
 import { AiFillFileImage } from "react-icons/ai";
 import { UserReport } from "../../../utils/constants";
 
-const Uploader: React.FC = () => {
+interface UploaderProps {
+  onFileSelected: (image: File | null) => void;
+}
+
+const Uploader: React.FC<UploaderProps> = ({onFileSelected}) => {
+
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [image, setImage] = useState<string | null>(null);
+  const [Image, setImage] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string>(UserReport.NoSelected);
 
   const handleClick = () => {
@@ -19,7 +24,9 @@ const Uploader: React.FC = () => {
     selectedFile && setFileName(selectedFile.name);
     if (selectedFile) {
       setImage(URL.createObjectURL(selectedFile));
+      onFileSelected(selectedFile);
     }
+    
   };
   const handleDeleteClick = () => {
     setImage("");
@@ -40,8 +47,8 @@ const Uploader: React.FC = () => {
           ref={fileInputRef}
           onChange={handleChange}
         />
-        {image ? (
-          <img src={image} className="w-full min-h-full p-4" />
+        {Image ? (
+          <img src={Image} alt='Image' className="w-full min-h-full p-4" />
         ) : (
           <MdCloudUpload color="#1475cf" size={50} />
         )}

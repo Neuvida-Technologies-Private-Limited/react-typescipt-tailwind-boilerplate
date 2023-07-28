@@ -3,7 +3,7 @@ import { atom } from 'recoil'
 export const createTicketState = atom({
   key: 'createTicket-state',
   default: {
-    image: '',
+    image: null ,
     report: '',
     reportError:'',
     location: '',
