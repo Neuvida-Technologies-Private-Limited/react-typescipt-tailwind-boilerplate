@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Label } from "../../common";
 import { UserProfile } from "../../../utils/constants";
-import { GetProfile } from "../../../infra/api/auth/profile-api";
+import { GetProfile } from "../../../infra/api/auth";
 import { useRecoilState } from "recoil";
-import { profileState } from "../../../infra/state/profile";
+import { profileState } from "../../../infra/state";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

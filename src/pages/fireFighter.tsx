@@ -9,7 +9,7 @@ const items = [
 
 const FireFighter: React.FC = () => {
   return (
-    <div className="flex flex-col justify-between h-screen">
+    <div className="flex flex-col  h-screen">
       <Header
         src="/assets/icons/avatar.svg"
         heading="Fire Fighter's Dashboard"

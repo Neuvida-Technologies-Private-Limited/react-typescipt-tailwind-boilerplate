@@ -1,136 +1,154 @@
-import React, { ReactNode } from "react";
-import {ConfirmDropdown} from "../index";
+import React, { ReactNode, useEffect } from "react";
+import { ConfirmDropdown, Step } from "../index";
 import { Table } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import { FireFighterDashboard } from "../../../utils/constants";
+import { firefighterState } from "../../../infra/state";
+import { GetDispatchCenterList } from "../../../infra/api/auth";
+import { useRecoilState } from "recoil";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface DataType {
   key: React.Key;
-  incident: string;
+  report: string;
   location: string;
   status: string;
-  assign: ReactNode;
 }
-const options = [
+interface OptionItems {
+  value: string;
+  label: string;
+}
+interface APIResponseData {
+  first_name: string;
+  last_name: string;
+  email: string;
+}
+interface ActiveTableProp {
+  data: DataType[];
+}
+
+const Index: React.FC<ActiveTableProp> = ({ data }) => {
+  const [options, setOptions] = React.useState<OptionItems[]>([]);
+
+  const getDispatchCenterList = async () => {
+    try {
+      const res = await GetDispatchCenterList();
+
+      const convertResponseToOptions = (
+        responseData: APIResponseData[]
+      ): OptionItems[] => {
+        return responseData.map((data) => ({
+          value: `${data.first_name} ${data.last_name}`,
+          label: `${data.first_name} ${data.last_name}`,
+        }));
+      };
+
+      setOptions(convertResponseToOptions(res));
+    } catch (error: any) {
+      const errorMessage = error.error.message;
+      toast.warn(errorMessage);
+    }
+  };
+
+  useEffect(() => {
+    getDispatchCenterList();
+  }, []);
+  const columns: ColumnsType<DataType> = [
     {
-      value: '911 Center',
-      label: '911 Center',
+      title: "Incident",
+      dataIndex: "report",
+      fixed: 'left',
+      filters: [
+        {
+          text: "Fire in beginning",
+          value: "Fire in beginning",
+        },
+        {
+          text: "Fire with smoke",
+          value: "Fire with smoke",
+        },
+        {
+          text: "Extreme fire",
+          value: "Extreme fire",
+        },
+      ],
+      filterMode: "tree",
+      filterSearch: true,
+      onFilter: (value: string | number | boolean, record: DataType) =>
+        record.report.startsWith(String(value)),
+      width: 200,
     },
     {
-      value: 'Systems Al Umam',
-      label: 'Cooperative Company for Communication Systems Al Umam Commercial Center',
+      title: "Location",
+      dataIndex: "location",
+      width: 200,
     },
     {
-      value: 'FireDIRECT Center',
-      label: 'FireDIRECT Center Co. Ltd',
+      title: "Status",
+      dataIndex: "status",
+      width:130,
+      filters: [
+        {
+          text: "London",
+          value: "London",
+        },
+        {
+          text: "New York",
+          value: "New York",
+        },
+      ],
+      onFilter: (value: string | number | boolean, record: DataType) =>
+        record.status.startsWith(String(value)),
+      filterSearch: true,
     },
     {
-      value: 'Fire direct co.ltd',
-      label: 'Fire direct co.ltd',
+      title: "Choose Dispatch Center",
+      key: "operation",
+      width: 220,
+      render: () => {
+        return (
+          <ConfirmDropdown
+            options={options}
+            placeholder={FireFighterDashboard.Assign}
+            className="Firefighter"
+          />
+        );
+      },
+    },
+    {
+      title: "Activity",
+      key: "operation",
+      width: 120,
+      render: () => {
+        return (
+          <Step />
+        );
+      },
     },
   ];
 
+  const onChange: TableProps<DataType>["onChange"] = (
+    pagination,
+    filters,
+    sorter,
+    extra
+  ) => {
+    // Implement the required functionality for the onChange handler if needed.
+  };
 
-const columns: ColumnsType<DataType> = [
-  {
-    title: "Incident",
-    dataIndex: "incident",
-    filters: [
-      {
-        text: "Fire in beginning",
-        value: "Fire in beginning",
-      },
-      {
-        text: "Fire with smoke",
-        value: "Fire with smoke",
-      },
-      {
-        text: "Extreme fire",
-        value: "Extreme fire",
-      },
-    ],
-    filterMode: "tree",
-    filterSearch: true,
-    onFilter: (value: string | number | boolean, record: DataType) =>
-      record.incident.startsWith(String(value)),
-    width: "30%",
-  },
-  {
-    title: "Location",
-    dataIndex: "location",
-    width: "30%",
-  },
-  {
-    title: "Status",
-    dataIndex: "status",
-    filters: [
-      {
-        text: "London",
-        value: "London",
-      },
-      {
-        text: "New York",
-        value: "New York",
-      },
-    ],
-    onFilter: (value: string | number | boolean, record: DataType) =>
-      record.status.startsWith(String(value)),
-    filterSearch: true,
-    width: "10%",
-  },
-  {
-    title: "Assign Dispatch Center",
-    dataIndex: "assign",
-    filterSearch: true,
-    width: "30%",
-  },
-];
-
-const data: DataType[] = [
-  {
-    key: "1",
-    incident: "Fire in beginning",
-    location: "",
-    status: "Pending",
-    assign: <ConfirmDropdown options={options} placeholder={FireFighterDashboard.Assign} className="Firefighter w-1/2"/>,
-  },
-  {
-    key: "2",
-    incident: "Fire with smoke",
-    location: "",
-    status: "Pending",
-    assign: <ConfirmDropdown options={options} placeholder={FireFighterDashboard.Assign} className="Firefighter w-1/2"/>,
-  },
-  {
-    key: "3",
-    incident: "Extreme Fire",
-    location: "",
-    status: "Active",
-    assign: <ConfirmDropdown options={options} placeholder={FireFighterDashboard.Assign} className="Firefighter w-1/2"/>,
-  },
-  {
-    key: "4",
-    incident: "Fire with smoke",
-    location: "",
-    status: "Active",
-    assign: <ConfirmDropdown options={options} placeholder={FireFighterDashboard.Assign} className="w-1/2"/>,
-  },
-];
-
-const onChange: TableProps<DataType>["onChange"] = (
-  pagination,
-  filters,
-  sorter,
-  extra
-) => {};
-
-const Index: React.FC = () => (
-  <Table
-    columns={columns}
-    dataSource={data}
-    onChange={onChange}
-    className="w-full mt-2"
-  />
-);
+  return (
+    <div className="overflow-x-hidden">
+      <Table
+        columns={columns}
+        dataSource={data}
+        onChange={onChange}
+        className="w-full mt-2 text-xs"
+        scroll={{ x:'calc(300px + 60%)',y: 350 }}
+      />
+      <ToastContainer />
+    </div>
+  );
+};
 
 export default Index;

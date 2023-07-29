@@ -9,3 +9,6 @@ export enum ticketRoutes {
 export enum profileRoutes {
     GET_PROFILE_ROUTE = '/v1/access/get_profile_details',
 }
+export enum fireFighterRoutes {
+    GET_DISPATCH_CENTER_ROUTE = '/v1/access/get-disptach-center',
+}
