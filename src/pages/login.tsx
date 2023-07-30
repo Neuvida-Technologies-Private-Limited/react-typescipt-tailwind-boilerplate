@@ -15,11 +15,16 @@ import { isEmailValidated, isPasswordValidated } from "../utils/validations";
 // login state
 import { loginState } from "../infra/state";
 
+const options = [
+  { value: 'user911', label: 'User' },
+  { value: 'fire-fighter', label: 'Fire Fighter' },
+  { value: 'Dispatch Center', label: 'Dispatch Center' },
+]
+
 const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const [state, setState] = useRecoilState(loginState);
-
   // destructuring params
   const { email, emailError, password, passwordError } = state;
 
@@ -95,38 +100,38 @@ const Login: React.FC = () => {
           </div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form
-              className="lg:w-96 md:w-80 sm:64"
+              className="login lg:w-96 md:w-80 sm:64"
               action="#"
               method="POST"
               onSubmit={submitHandler}
             >
-              <Label name={LoginConst.Email} />
+              <Label name={LoginConst.Email} className=" text-sm font-medium" />
               <Input
                 id="email"
                 name="email"
                 type="text"
                 placeholder="johndoeatdesign@xyz.com"
-                className="w-full mt-4"
+                className="w-full mt-4 border-2 border-gray-400 p-3"
                 onChange={handleEmailChange}
                 value={email}
                 error={emailError}
               />
-              <Label name={LoginConst.Password} className="mt-4" />
+              <Label name={LoginConst.Password} className="mt-4  text-sm font-medium" />
               <Input
                 id="password"
                 name="password"
                 type="password"
                 placeholder="******"
-                className="w-full mt-4"
+                className="w-full mt-4 border-2 border-gray-400 p-3"
                 onChange={handlePasswordChange}
                 value={password}
                 error={passwordError}
               />
-              <Label name={LoginConst.Role} className="mt-4" />
-              <Dropdown />
+              <Label name={LoginConst.Role} className="mt-4  text-sm font-medium" />
+              <Dropdown options={options} placeholder="Select the role" className="mt-4"/>
               <Button
                 name="Submit"
-                className="md:py-4 sm:py-2 mt-4 bg-vividTangerine hover:bg-internationalOrange hover:shadow-orange-200 hover:shadow-lg transition text-white"
+                className="md:py-4 sm:py-2 w-full mt-4 bg-vividTangerine hover:bg-internationalOrange hover:shadow-orange-200 hover:shadow-lg transition text-white"
               />
             </form>
           </div>

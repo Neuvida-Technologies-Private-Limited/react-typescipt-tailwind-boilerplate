@@ -6,3 +6,7 @@ export { default as Logout } from "./logout";
 export { default as Header } from "./header";
 export { default as Footer } from "./footer";
 export { default as SideBar } from "./sidebar";
+export { default as TextArea } from "./textarea";
+export { default as IconButton } from "./icon-button";
+export { default as ActiveTable } from "./tables/activeTable";
+export { default as InActiveTable } from "./tables/inActiveTable";

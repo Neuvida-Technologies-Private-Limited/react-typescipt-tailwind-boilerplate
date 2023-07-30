@@ -1,21 +1,28 @@
 import React from 'react';
 import { Select, Space } from 'antd';
 
+interface OptionItems {
+  value: string,
+  label: string
+}
+
+interface DropdownProps {
+options: OptionItems[],
+placeholder: string,
+className ?:string
+}
+
 const handleChange = (value: string) => {
   // console.log(`selected ${value}`);
 };
 
-const Dropdown: React.FC = () => (
-  <Space wrap className='flex mt-4' >
+const Dropdown: React.FC<DropdownProps> = ({options, placeholder, className}) => (
+  <Space wrap className={`flex ${className}`}  >
     <Select
-      placeholder = "Select Your Role"
-      className='w-full '
+      placeholder = {placeholder}
+      className='w-full'
       onChange={handleChange}
-      options={[
-        { value: 'user911', label: 'User' },
-        { value: 'fire-fighter', label: 'Fire Fighter' },
-        { value: 'Dispatch Center', label: 'Dispatch Center' },
-      ]}
+      options={options}
     />
   </Space>
 );

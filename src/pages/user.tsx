@@ -1,25 +1,24 @@
-import React from 'react'
-import {Space} from 'antd'
-import { Header, Footer, SideBar } from '../components/common'
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import { Header, Footer, SideBar } from "../components/common";
+import { Outlet } from "react-router-dom";
 
 const items = [
-  {key: '/user', label: 'Report an Incident'},
-  {key: '/user/history', label: 'History'},
-  {key: '/user/profile', label: 'Profile'},
+  { key: "/user", label: "Create a ticket" },
+  { key: "/user/history", label: "History" },
+  { key: "/user/profile", label: "Profile" },
 ];
 
-const User:React.FC = () => {
+const User: React.FC = () => {
   return (
-    <div className='flex flex-col justify-between h-screen'>
-    <Header src="/assets/icons/avatar.svg" heading="User's Dashboard"/>
-    <Space className='flex justify-start items-start '>
-      <SideBar items={items}/>
-      <Outlet />
-    </Space>
-    <Footer />
+    <div className="user flex flex-col justify-between h-screen">
+      <Header src="/assets/icons/avatar.svg" heading="User's Dashboard" />
+      <div className="flex">
+        <SideBar items={items}/>
+        <Outlet />
+      </div>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default User
+export default User;

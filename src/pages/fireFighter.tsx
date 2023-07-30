@@ -1,25 +1,27 @@
-import React from 'react'
-import {Space} from 'antd'
-import { Header, Footer, SideBar } from '../components/common'
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import { Header, Footer, SideBar } from "../components/common";
+import { Outlet } from "react-router-dom";
 
 const items = [
-  {key: '/firefighter', label: 'Report an Incident'},
-  {key: '/firefighter/history', label: 'History'},
-  {key: '/firefighter/profile', label: 'Profile'},
+  { key: "/firefighter", label: "Report an Incident" },
+  { key: "/firefighter/history", label: "History" },
+  { key: "/firefighter/profile", label: "Profile" },
 ];
 
-const FireFighter:React.FC = () => {
+const FireFighter: React.FC = () => {
   return (
-    <div className='flex flex-col justify-between h-screen'>
-    <Header src="/assets/icons/avatar.svg" heading="Fire Fighter's Dashboard"/>
-    <Space className='flex justify-start items-start '>
-      <SideBar items={items}/>
-      <Outlet />
-    </Space>
-    <Footer />
+    <div className="flex flex-col justify-between h-screen">
+      <Header
+        src="/assets/icons/avatar.svg"
+        heading="Fire Fighter's Dashboard"
+      />
+      <div className="flex">
+        <SideBar items={items} />
+        <Outlet />
+      </div>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default FireFighter
+export default FireFighter;
