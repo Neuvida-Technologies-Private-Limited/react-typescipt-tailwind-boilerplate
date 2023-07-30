@@ -18,7 +18,7 @@ const items = [
 ];
 const App: React.FC = () => (
   <>
-    <Steps current={2} percent={50} labelPlacement="vertical" items={items} size="small" className='font-poppins text-xs'/>
+    <Steps current={2} percent={50} direction="vertical" items={items} size="small" className='font-poppins text-xs'/>
   </>
 );
 

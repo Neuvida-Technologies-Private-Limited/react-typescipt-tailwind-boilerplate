@@ -14,10 +14,12 @@ interface DataType {
   report: string;
   location: string;
   status: string;
+  ticket_id: string;
 }
 interface OptionItems {
   value: string;
   label: string;
+  email: string;
 }
 interface APIResponseData {
   first_name: string;
@@ -41,6 +43,7 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
         return responseData.map((data) => ({
           value: `${data.first_name} ${data.last_name}`,
           label: `${data.first_name} ${data.last_name}`,
+          email: data.email,
         }));
       };
 
@@ -58,7 +61,7 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
     {
       title: "Incident",
       dataIndex: "report",
-      fixed: 'left',
+      fixed: "left",
       filters: [
         {
           text: "Fire in beginning",
@@ -87,7 +90,7 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
     {
       title: "Status",
       dataIndex: "status",
-      width:130,
+      width: 130,
       filters: [
         {
           text: "London",
@@ -106,9 +109,10 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
       title: "Choose Dispatch Center",
       key: "operation",
       width: 220,
-      render: () => {
+      render: (_, record) => {
         return (
           <ConfirmDropdown
+            ticketID={record.ticket_id}
             options={options}
             placeholder={FireFighterDashboard.Assign}
             className="Firefighter"
@@ -121,30 +125,18 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
       key: "operation",
       width: 120,
       render: () => {
-        return (
-          <Step />
-        );
+        return <Step />;
       },
     },
   ];
-
-  const onChange: TableProps<DataType>["onChange"] = (
-    pagination,
-    filters,
-    sorter,
-    extra
-  ) => {
-    // Implement the required functionality for the onChange handler if needed.
-  };
 
   return (
     <div className="overflow-x-hidden">
       <Table
         columns={columns}
         dataSource={data}
-        onChange={onChange}
         className="w-full mt-2 text-xs"
-        scroll={{ x:'calc(300px + 60%)',y: 350 }}
+        scroll={{ x: "calc(300px + 60%)", y: 350 }}
       />
       <ToastContainer />
     </div>

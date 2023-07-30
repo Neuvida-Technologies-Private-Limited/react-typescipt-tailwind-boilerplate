@@ -39,11 +39,10 @@ const History = () => {
       toast.warn(errorMessage);
     }
   };
-
   useEffect(() => {
     handleRefresh();
-  });
-
+  }, []);
+  
   return (
     <div className="px-4 py-2 w-5/6">
       <div className="flex justify-between items-start">
