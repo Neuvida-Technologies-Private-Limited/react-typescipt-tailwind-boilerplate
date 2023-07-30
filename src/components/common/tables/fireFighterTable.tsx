@@ -80,7 +80,7 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
       filterSearch: true,
       onFilter: (value: string | number | boolean, record: DataType) =>
         record.report.startsWith(String(value)),
-      width: 200,
+      width: 120,
     },
     {
       title: "Location",
@@ -123,7 +123,7 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
     {
       title: "Activity",
       key: "operation",
-      width: 120,
+      width: 150,
       render: () => {
         return <Step />;
       },
