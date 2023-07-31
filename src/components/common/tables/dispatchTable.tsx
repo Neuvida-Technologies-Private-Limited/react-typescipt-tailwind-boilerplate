@@ -1,29 +1,14 @@
-import React, { ReactNode } from "react";
-import {ConfirmDropdown, Step} from "../index";
+import React, { ReactChildren, ReactComponentElement, ReactNode } from "react";
+import { DispatchModal, Step } from "../index";
 import { Table } from "antd";
-import type { ColumnsType, TableProps } from "antd/es/table";
-import { DispatchDashboard } from "../../../utils/constants";
+import type { ColumnsType } from "antd/es/table";
 
 interface DataType {
   key: React.Key;
   incident: string;
   location: string;
   status: string;
-  setStatus: ReactNode;
 }
-const options = [
-    {
-      value: 'resolved',
-      label: 'Resolved',
-      email: '',
-    },
-    {
-      value: 'false_alarm',
-      label: 'False_Alarm',
-      email: '',
-    },
-  ];
-
 
 const columns: ColumnsType<DataType> = [
   {
@@ -91,15 +76,18 @@ const columns: ColumnsType<DataType> = [
     width: "15%",
   },
   {
-    title: "Set Status",
-    dataIndex: "setStatus",
+    title: "Options",
+    dataIndex: "dispatchModal",
     filterSearch: true,
     width: "20%",
+    render: () => {
+      return <DispatchModal />;
+    },
   },
   {
     title: "Activity",
     key: "operation",
-    width: '20%',
+    width: "20%",
     render: () => {
       return <Step />;
     },
@@ -112,31 +100,18 @@ const data: DataType[] = [
     incident: "Fire in beginning",
     location: "",
     status: "Pending",
-    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
-  },
-  {
-    key: "2",
-    incident: "Fire with smoke",
-    location: "",
-    status: "Pending",
-    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
-  },
-  {
-    key: "3",
-    incident: "Extreme Fire",
-    location: "",
-    status: "Active",
-    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
   },
 ];
 
-const Index: React.FC = () => (
-  <Table
-    columns={columns}
-    dataSource={data}
-    className="w-full mt-2"
-    scroll={{y: 350 }}
-  />
-);
+const Index: React.FC = () => {
+  return (
+    <Table
+      columns={columns}
+      dataSource={data}
+      className="w-full mt-2"
+      scroll={{ y: 350 }}
+    />
+  );
+};
 
 export default Index;

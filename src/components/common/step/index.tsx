@@ -14,10 +14,10 @@ const items = [
     description: '',
   },
 ];
-const App: React.FC = () => (
+const Index: React.FC = () => (
   <>
     <Steps current={2} percent={30} direction="vertical" items={items} size="small" className='font-poppins text-xs'/>
   </>
 );
 
-export default App;
+export default  Index;

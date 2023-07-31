@@ -8,6 +8,7 @@ import { GetTicket } from "../../../../infra/api/auth/ticket-api";
 import { useRecoilState } from "recoil";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { IoMdRefresh } from "react-icons/io";
 
 const onChange = (key: string) => {};
 
@@ -60,6 +61,7 @@ const History = () => {
           name={FireFighterDashboard.Refresh}
           className="bg-green-500 h-10 hover:shadow-md hover:bg-green-600 hover:shadow-green-300 transition-all ease-in-out duration-300"
           onClick={handleRefresh}
+          Icon = {<IoMdRefresh size={20}/>}
         />
       </div>
       <ToastContainer />

@@ -1,25 +1,31 @@
-import React from "react";
-import {IoMdRefresh} from 'react-icons/io'
+import React, { ReactNode } from "react";
+import { IoMdRefresh } from "react-icons/io";
 
 interface ButtonSmProps {
   className?: string;
   name: string;
   spanStyle?: string;
-  onClick : () => void;
+  onClick: () => void;
+  Icon?: ReactNode;
 }
 
-const iconButton: React.FC<ButtonSmProps> = ({
+const IconButton: React.FC<ButtonSmProps> = ({
   className,
   name,
   spanStyle,
-  onClick
+  onClick,
+  Icon,
 }) => {
   return (
-    <button className={`${className} flex px-4 gap-2 font-poppins text-white items-center rounded-lg`} onClick={onClick}>
-      <IoMdRefresh size={20}/>
+    <button
+      className={`${className} flex px-4 gap-2 font-poppins text-white items-center rounded-lg`}
+      onClick={onClick}
+    >
+      {Icon}
+
       <span className={spanStyle}> {name}</span>
     </button>
   );
 };
 
-export default iconButton;
+export default IconButton;
