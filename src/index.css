@@ -5,7 +5,7 @@
 body {
   background-color: rgba(218, 218, 218, 0.301);
 }
-.login .ant-space-item {
+.login  .ant-space-item {
   width: 100%;
 }
 .login .ant-select-selector {
@@ -16,4 +16,11 @@ body {
 .user .ant-select-selector {
   border: 1px solid #9f9f9f !important;
   width: 13.5rem !important;
+}
+table {
+  font-family: 'Poppins';
+}
+.ant-select-selection-placeholder {
+  font-family: 'Poppins';
+  color: rgb(194, 194, 194) !important;
 }

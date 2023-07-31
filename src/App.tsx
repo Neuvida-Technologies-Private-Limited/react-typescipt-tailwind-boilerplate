@@ -6,7 +6,7 @@ import Login from "./pages/login";
 import User from "./pages/user";
 import FireFighter from "./pages/fireFighter";
 import DispatchCenter from "./pages/dispatchCenter";
-import { UserReport, UserHistory, UserProfile, DispatchCenterReport,FireFighterReport, FireFighterHistory, FireFighterProfile, DispatchCenterHistory, DispatchCenterProfile } from "./components/helpers";
+import { UserReport, UserHistory, Profile, DispatchCenterDashboard, FireFighterDashboard } from "./components/helpers";
 import PrivateRoutes from "./utils/PrivateRoutes/PrivateRoutes";
 import "./App.css";
 
@@ -20,21 +20,19 @@ function App() {
               <Route element={<User />} path="/user">
                 <Route element={<UserReport />} path="/user" />
                 <Route element={<UserHistory />} path="/user/history" />
-                <Route element={<UserProfile />} path="/user/profile" />
+                <Route element={<Profile />} path="/user/profile" />
               </Route>
             </Route>
             <Route element={<PrivateRoutes roleRequired="FIREFIGHTER" />}>
               <Route element={<FireFighter />} path="/firefighter" >
-                <Route element={<FireFighterReport />} path="/firefighter" />
-                <Route element={<FireFighterHistory />} path="/firefighter/history" />
-                <Route element={<FireFighterProfile />} path="/firefighter/profile" />
+                <Route element={<FireFighterDashboard />} path="/firefighter" />
+                <Route element={<Profile />} path="/firefighter/profile" />
                 </Route>
             </Route>
             <Route element={<PrivateRoutes roleRequired="DISPATCH_CENTER" />}>
               <Route element={<DispatchCenter />} path="/dispatch_center">
-              <Route element={<DispatchCenterReport />} path="/dispatch_center" />
-                <Route element={<DispatchCenterHistory />} path="/dispatch_center/history" />
-                <Route element={<DispatchCenterProfile />} path="/dispatch_center/profile" />
+              <Route element={<DispatchCenterDashboard />} path="/dispatch_center" />
+                <Route element={<Profile />} path="/dispatch_center/profile" />
               </Route>
             </Route>
             <Route path="/" element={<Login />} />

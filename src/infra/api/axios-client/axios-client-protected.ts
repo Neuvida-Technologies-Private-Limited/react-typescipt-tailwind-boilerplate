@@ -33,7 +33,7 @@ axiosClientProtected.interceptors.response.use(
   },
   function (error: AxiosError) {
     // Do something with the response error
-    return Promise.reject(error);
+    return Promise.reject(error.response?.data);
   }
 );
 
