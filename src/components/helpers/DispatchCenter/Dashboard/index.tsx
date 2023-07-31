@@ -1,23 +1,30 @@
 import React, { useEffect } from "react";
-import { Label, IconButton, DispatchTable } from "../../../common";
-import { DispatchDashboard } from "../../../../utils/constants";
 import { Tabs } from "antd";
 import type { TabsProps } from "antd";
-import { ticketState } from "../../../../infra/state";
-import { GetTicket } from "../../../../infra/api/auth/ticket-api";
 import { useRecoilState } from "recoil";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoMdRefresh } from "react-icons/io";
+//components
+import { Label, IconButton, DispatchTable } from "../../../common";
+//constants
+import { DispatchDashboard } from "../../../../utils/constants";
+//states
+import { ticketState } from "../../../../infra/state";
+//APIs
+import { GetTicket } from "../../../../infra/api/auth/ticket-api";
 
 const onChange = (key: string) => {};
 
 const History = () => {
+  const [state, setState] = useRecoilState(ticketState);
+  const { ticket_history } = state;
+  
   const items: TabsProps["items"] = [
     {
       key: "1",
       label: `Active`,
-      children: <DispatchTable />,
+      children: <DispatchTable data={ticket_history}/>,
     },
     {
       key: "2",
@@ -27,11 +34,22 @@ const History = () => {
   ];
 
   const handleRefresh = async () => {
+    try {
+      const res = await GetTicket();
+
+      setState((old) => ({
+        ...old,
+        ticket_history: res.ticket_history,
+      }));
+    } catch (error: any) {
+      const errorMessage = error.error.message;
+      toast.warn(errorMessage);
+    }
   };
 
   useEffect(() => {
     handleRefresh();
-  });
+  },[]);
 
   return (
     <div className="px-4 py-2 w-5/6">

@@ -1,20 +1,25 @@
 import React, { useEffect } from "react";
-import { Label, IconButton, FireFighterTable } from "../../../common";
-import { FireFighterDashboard } from "../../../../utils/constants";
 import { Tabs } from "antd";
 import type { TabsProps } from "antd";
-import { ticketState } from "../../../../infra/state";
-import { GetTicket } from "../../../../infra/api/auth/ticket-api";
 import { useRecoilState } from "recoil";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoMdRefresh } from "react-icons/io";
+//components
+import { Label, IconButton, FireFighterTable } from "../../../common";
+//constants
+import { FireFighterDashboard } from "../../../../utils/constants";
+//states
+import { ticketState } from "../../../../infra/state";
+//APIs
+import { GetTicket } from "../../../../infra/api/auth/ticket-api";
 
 const onChange = (key: string) => {};
 
 const History = () => {
   const [state, setState] = useRecoilState(ticketState);
   const { ticket_history } = state;
+  
   const items: TabsProps["items"] = [
     {
       key: "1",

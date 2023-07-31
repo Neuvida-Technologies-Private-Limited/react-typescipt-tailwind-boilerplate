@@ -40,7 +40,7 @@ export enum UserProfile {
   FirstName = "First Name :",
   LastName = "Last Name :",
   Email = "Email :",
-  UserType = "User Type :"
+  UserType = "User Type :",
 }
 export enum FireFighterDashboard {
   Dashboard = "Dashboard~",
@@ -53,3 +53,37 @@ export enum DispatchDashboard {
   Select = "Select the Status",
   Refresh = "Refresh"
 }
+export enum TableConst {
+  Incident = "Incident",
+  UploadedImage = "Uploaded Image",
+  Options = "Options",
+  Choose = "Choose Dispatch Center",
+  Location = "Location",
+  Status = "Status",
+  Activity = "Activity",
+  FireBeginning = "Fire in Beginning",
+  FireSmoke = "Fire with smoke",
+  Extremefire = "Extreme fire",
+  Created = "CREATED",
+  Assigned = "ASSIGNED",
+  False = "FALSE_ALARM",
+  Resolved = "RESOLVED",
+}
+
+export const options =  [
+  {
+    value: 'resolved',
+    label: 'Resolved',
+    email: '',
+  },
+  {
+    value: 'false_alarm',
+    label: 'False_Alarm',
+    email: '',
+  },
+];
+export const UserOptions = [
+  { value: "Fire in Beginning", label: "Fire in Beginning" },
+  { value: "Fire with smoke", label: "Fire with smoke" },
+  { value: "Extreme fire", label: "Extreme fire" },
+]

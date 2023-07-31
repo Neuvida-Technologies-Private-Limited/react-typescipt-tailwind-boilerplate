@@ -1,13 +1,14 @@
-import React, { ReactNode, useEffect } from "react";
-import { ConfirmDropdown, Step } from "../index";
+import React, { useEffect } from "react";
 import { Table } from "antd";
-import type { ColumnsType, TableProps } from "antd/es/table";
-import { FireFighterDashboard } from "../../../utils/constants";
-import { firefighterState } from "../../../infra/state";
-import { GetDispatchCenterList } from "../../../infra/api/auth";
-import { useRecoilState } from "recoil";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import type { ColumnsType } from "antd/es/table";
+//components
+import { ConfirmDropdown, Step } from "../index";
+//constants
+import { FireFighterDashboard, TableConst } from "../../../utils/constants";
+//APIs
+import { GetDispatchCenterList } from "../../../infra/api/auth";
 
 interface DataType {
   key: React.Key;
@@ -57,23 +58,24 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
   useEffect(() => {
     getDispatchCenterList();
   }, []);
+
   const columns: ColumnsType<DataType> = [
     {
-      title: "Incident",
+      title: `${TableConst.Incident}`,
       dataIndex: "report",
       fixed: "left",
       filters: [
         {
-          text: "Fire in beginning",
-          value: "Fire in beginning",
+          text: `${TableConst.FireBeginning}`,
+          value: `${TableConst.FireBeginning}`,
         },
         {
-          text: "Fire with smoke",
-          value: "Fire with smoke",
+          text: `${TableConst.FireSmoke}`,
+          value: `${TableConst.FireSmoke}`,
         },
         {
-          text: "Extreme fire",
-          value: "Extreme fire",
+          text: `${TableConst.Extremefire}`,
+          value: `${TableConst.Extremefire}`,
         },
       ],
       filterMode: "tree",
@@ -83,12 +85,12 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
       width: 120,
     },
     {
-      title: "Location",
+      title: `${TableConst.Location}`,
       dataIndex: "location",
       width: 200,
     },
     {
-      title: "Status",
+      title: `${TableConst.Status}`,
       dataIndex: "status",
       width: 130,
       filters: [
@@ -106,7 +108,7 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
       filterSearch: true,
     },
     {
-      title: "Choose Dispatch Center",
+      title: `${TableConst.Choose}`,
       key: "operation",
       width: 220,
       render: (_, record) => {
@@ -121,7 +123,7 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
       },
     },
     {
-      title: "Activity",
+      title: `${TableConst.Activity}`,
       key: "operation",
       width: 150,
       render: () => {

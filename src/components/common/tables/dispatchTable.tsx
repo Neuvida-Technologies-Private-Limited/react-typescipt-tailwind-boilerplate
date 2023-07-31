@@ -1,7 +1,10 @@
-import React, { ReactChildren, ReactComponentElement, ReactNode } from "react";
-import { DispatchModal, Step } from "../index";
+import React from "react";
 import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
+//components
+import { DispatchModal, Step } from "../index";
+//constants
+import { TableConst } from "../../../utils/constants";
 
 interface DataType {
   key: React.Key;
@@ -12,20 +15,20 @@ interface DataType {
 
 const columns: ColumnsType<DataType> = [
   {
-    title: "Incident",
-    dataIndex: "incident",
+    title: `${TableConst.Incident}`,
+    dataIndex: "report",
     filters: [
       {
-        text: "Fire in beginning",
-        value: "Fire in beginning",
+        text: `${TableConst.FireBeginning}`,
+        value: `${TableConst.FireBeginning}`,
       },
       {
-        text: "Fire with smoke",
-        value: "Fire with smoke",
+        text: `${TableConst.FireSmoke}`,
+        value: `${TableConst.FireSmoke}`,
       },
       {
-        text: "Extreme fire",
-        value: "Extreme fire",
+        text: `${TableConst.Extremefire}`,
+        value: `${TableConst.Extremefire}`,
       },
     ],
     filterMode: "tree",
@@ -35,7 +38,7 @@ const columns: ColumnsType<DataType> = [
     width: "20%",
   },
   {
-    title: "Location",
+    title: `${TableConst.Location}`,
     dataIndex: "location",
     filters: [
       {
@@ -76,7 +79,7 @@ const columns: ColumnsType<DataType> = [
     width: "15%",
   },
   {
-    title: "Options",
+    title: `${TableConst.Options}`,
     dataIndex: "dispatchModal",
     filterSearch: true,
     width: "20%",
@@ -85,7 +88,7 @@ const columns: ColumnsType<DataType> = [
     },
   },
   {
-    title: "Activity",
+    title:`${TableConst.Activity}`,
     key: "operation",
     width: "20%",
     render: () => {
@@ -94,16 +97,10 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 
-const data: DataType[] = [
-  {
-    key: "1",
-    incident: "Fire in beginning",
-    location: "",
-    status: "Pending",
-  },
-];
-
-const Index: React.FC = () => {
+interface DispatchTableProp {
+  data: DataType[]
+}
+const Index: React.FC<DispatchTableProp> = ({data}) => {
   return (
     <Table
       columns={columns}
