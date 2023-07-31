@@ -24,31 +24,31 @@ export enum FooterConst {
   Love = "Made with ❤️",
 }
 export enum UserReport {
-  CreateTicket = "Create a ticket ~ ",
+  CreateTicket = "Create a ticket~ ",
   NoSelected = "No selected file",
   Incident = "Report an Incident : ",
-  UploadImage = "Upload Image :",
-  Location = "Location :",
+  UploadImage = "Upload Image",
+  Location = "Location",
   TicketCreated = "Ticket Created Successfully"
 }
 export enum UserHistory {
-  History = "History ~",
+  History = "History~",
   Refresh = "Refresh"
 }
 export enum UserProfile {
-  Profile = "Profile ~",
+  Profile = "Profile~",
   FirstName = "First Name :",
   LastName = "Last Name :",
   Email = "Email :",
   UserType = "User Type :"
 }
 export enum FireFighterDashboard {
-  Dashboard = "Dashboard ~",
+  Dashboard = "Dashboard~",
   Assign = "Assign Dispatch Center",
   Refresh = "Refresh"
 }
 export enum DispatchDashboard {
-  Dashboard = "Dashboard ~",
+  Dashboard = "Dashboard~",
   Profile = "Profile ~",
   Select = "Select the Status",
   Refresh = "Refresh"

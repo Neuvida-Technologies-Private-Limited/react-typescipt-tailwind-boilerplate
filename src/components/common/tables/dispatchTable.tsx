@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import {ConfirmDropdown} from "../index";
+import {ConfirmDropdown, Step} from "../index";
 import { Table } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import { DispatchDashboard } from "../../../utils/constants";
@@ -47,7 +47,7 @@ const columns: ColumnsType<DataType> = [
     filterSearch: true,
     onFilter: (value: string | number | boolean, record: DataType) =>
       record.incident.startsWith(String(value)),
-    width: "30%",
+    width: "20%",
   },
   {
     title: "Location",
@@ -70,7 +70,7 @@ const columns: ColumnsType<DataType> = [
     filterSearch: true,
     onFilter: (value: string | number | boolean, record: DataType) =>
       record.incident.startsWith(String(value)),
-    width: "30%",
+    width: "25%",
   },
   {
     title: "Status",
@@ -88,13 +88,21 @@ const columns: ColumnsType<DataType> = [
     onFilter: (value: string | number | boolean, record: DataType) =>
       record.status.startsWith(String(value)),
     filterSearch: true,
-    width: "10%",
+    width: "15%",
   },
   {
     title: "Set Status",
     dataIndex: "setStatus",
     filterSearch: true,
-    width: "30%",
+    width: "20%",
+  },
+  {
+    title: "Activity",
+    key: "operation",
+    width: '20%',
+    render: () => {
+      return <Step />;
+    },
   },
 ];
 
@@ -120,28 +128,14 @@ const data: DataType[] = [
     status: "Active",
     setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
   },
-  {
-    key: "4",
-    incident: "Fire with smoke",
-    location: "",
-    status: "Active",
-    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
-  },
 ];
-
-const onChange: TableProps<DataType>["onChange"] = (
-  pagination,
-  filters,
-  sorter,
-  extra
-) => {};
 
 const Index: React.FC = () => (
   <Table
     columns={columns}
     dataSource={data}
-    onChange={onChange}
     className="w-full mt-2"
+    scroll={{y: 350 }}
   />
 );
 

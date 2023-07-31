@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
+import Step from "../step";
 
 interface DataType {
   key: React.Key;
@@ -32,12 +33,12 @@ const columns: ColumnsType<DataType> = [
     filterSearch: true,
     onFilter: (value: string | number | boolean, record: DataType) =>
       record.report.startsWith(String(value)),
-    width: "40%",
+    width: "20%",
   },
   {
     title: "Uploaded Image",
     dataIndex: "user_image",
-    width: "40%",
+    width: "20%",
     render: (userImage: string) =>
       userImage ? (
         <img
@@ -68,7 +69,7 @@ const columns: ColumnsType<DataType> = [
     filterSearch: true,
     onFilter: (value: string | number | boolean, record: DataType) =>
       record.location.startsWith(String(value)),
-    width: "40%",
+    width: "30%",
   },
   {
     title: "Status",
@@ -86,7 +87,15 @@ const columns: ColumnsType<DataType> = [
     onFilter: (value: string | number | boolean, record: DataType) =>
       record.status.startsWith(String(value)),
     filterSearch: true,
-    width: "40%",
+    width: "10%",
+  },
+  {
+    title: "Activity",
+    key: "operation",
+    width: '20%',
+    render: () => {
+      return <Step />;
+    },
   },
 ];
 
@@ -94,18 +103,10 @@ interface ActiveTableProp {
   data: DataType[]
 }
 
-const onChange: TableProps<DataType>["onChange"] = (
-  pagination,
-  filters,
-  sorter,
-  extra
-) => {};
-
 const Index: React.FC<ActiveTableProp> = ({data}) => (
   <Table
     columns={columns}
     dataSource={data}
-    onChange={onChange}
     className="w-full"
   />
 );
