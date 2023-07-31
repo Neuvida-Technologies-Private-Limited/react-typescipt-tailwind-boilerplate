@@ -28,7 +28,8 @@ export enum UserReport {
   NoSelected = "No selected file",
   Incident = "Report an Incident : ",
   UploadImage = "Upload Image :",
-  Location = "Location :"
+  Location = "Location :",
+  TicketCreated = "Ticket Created Successfully"
 }
 export enum UserHistory {
   History = "History ~",
@@ -36,8 +37,19 @@ export enum UserHistory {
 }
 export enum UserProfile {
   Profile = "Profile ~",
-  Name = "Name :",
+  FirstName = "First Name :",
+  LastName = "Last Name :",
   Email = "Email :",
-  Joe = "John Joe",
-  UserEmail = "johndoe@gmail.com"
+  UserType = "User Type :"
+}
+export enum FireFighterDashboard {
+  Dashboard = "Dashboard ~",
+  Assign = "Assign Dispatch Center",
+  Refresh = "Refresh"
+}
+export enum DispatchDashboard {
+  Dashboard = "Dashboard ~",
+  Profile = "Profile ~",
+  Select = "Select the Status",
+  Refresh = "Refresh"
 }

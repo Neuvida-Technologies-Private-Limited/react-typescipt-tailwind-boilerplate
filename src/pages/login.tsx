@@ -45,6 +45,9 @@ const Login: React.FC = () => {
       passwordError: isPasswordValidated(password),
     }));
   };
+  const handleDropdownChange = () => {
+
+  };
 
   // reseting the states
   const resetLoginState = useResetRecoilState(loginState);
@@ -128,7 +131,7 @@ const Login: React.FC = () => {
                 error={passwordError}
               />
               <Label name={LoginConst.Role} className="mt-4  text-sm font-medium" />
-              <Dropdown options={options} placeholder="Select the role" className="mt-4"/>
+              <Dropdown options={options} placeholder="Select the role" className="mt-4" onChange={handleDropdownChange}/>
               <Button
                 name="Submit"
                 className="md:py-4 sm:py-2 w-full mt-4 bg-vividTangerine hover:bg-internationalOrange hover:shadow-orange-200 hover:shadow-lg transition text-white"

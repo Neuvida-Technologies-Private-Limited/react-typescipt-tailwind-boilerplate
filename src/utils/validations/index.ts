@@ -15,3 +15,17 @@ export const isPasswordValidated = (password: string) => {
         return "";
     }
 }
+export const isReportValidated = (report: string) => {
+    if(report === ""){
+        return (" is required!");
+    }else{
+        return "";
+    }
+}
+export const isLocationValidated = (location: string) => {
+    if(location === ""){
+        return ("Location is required!");
+    }else{
+        return "";
+    }
+}
