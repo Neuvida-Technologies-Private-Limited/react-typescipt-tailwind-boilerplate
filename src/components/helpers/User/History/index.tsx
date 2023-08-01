@@ -1,19 +1,25 @@
 import React, { useEffect } from "react";
-import { Label, IconButton, ActiveTable, InActiveTable } from "../../../common";
-import { UserHistory } from "../../../../utils/constants";
 import { Tabs } from "antd";
 import type { TabsProps } from "antd";
-import { ticketState } from "../../../../infra/state";
-import { GetTicket } from "../../../../infra/api/auth/ticket-api";
 import { useRecoilState } from "recoil";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { IoMdRefresh } from "react-icons/io";
+//components
+import { Label, IconButton, ActiveTable, InActiveTable } from "../../../common";
+//constants
+import { UserHistory } from "../../../../utils/constants";
+//states
+import { ticketState } from "../../../../infra/state";
+//APIs
+import { GetTicket } from "../../../../infra/api/auth/ticket-api";
 
 const onChange = (key: string) => {};
 
 const History = () => {
   const [state, setState] = useRecoilState(ticketState);
   const { ticket_history } = state;
+
   const items: TabsProps["items"] = [
     {
       key: "1",
@@ -62,6 +68,7 @@ const History = () => {
           name={UserHistory.Refresh}
           className="bg-green-500 h-10 hover:shadow-md hover:bg-green-600 hover:shadow-green-300 transition-all ease-in-out duration-300"
           onClick={handleRefresh}
+          Icon = {<IoMdRefresh size={20}/>}
         />
       </div>
       <ToastContainer />

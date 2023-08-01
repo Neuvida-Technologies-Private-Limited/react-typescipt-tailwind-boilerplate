@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
-import { Label } from "../../common";
-import { UserProfile } from "../../../utils/constants";
-import { GetProfile } from "../../../infra/api/auth";
-import { useRecoilState } from "recoil";
-import { profileState } from "../../../infra/state";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRecoilState } from "recoil";
+//components
+import { Label } from "../../common";
+//constants
+import { UserProfile } from "../../../utils/constants";
+//APIs
+import { GetProfile } from "../../../infra/api/auth";
+//states
+import { profileState } from "../../../infra/state";
 
 const Profile: React.FC = () => {
   const [state, setState] = useRecoilState(profileState);

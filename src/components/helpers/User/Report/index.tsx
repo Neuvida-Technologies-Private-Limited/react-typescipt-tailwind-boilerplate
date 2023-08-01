@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRecoilState, useResetRecoilState } from "recoil";
+//components
 import { Uploader } from "../../index";
 import { Button, Dropdown, Label, TextArea } from "../../../common";
-import { UserReport } from "../../../../utils/constants";
+//constants
+import { UserOptions, UserReport } from "../../../../utils/constants";
 //APIs
 import { CreateTicket } from "../../../../infra/api/auth/ticket-api";
 //validations
@@ -15,11 +17,6 @@ import {
 // createTicket state
 import { createTicketState } from "../../../../infra/state";
 
-const options = [
-  { value: "Fire in Beginning", label: "Fire in Beginning" },
-  { value: "Fire with smoke", label: "Fire with smoke" },
-  { value: "Extreme fire", label: "Extreme fire" },
-];
 
 const Report: React.FC = () => {
   const [state, setState] = useRecoilState(createTicketState);
@@ -92,7 +89,7 @@ const Report: React.FC = () => {
       <div className="user w-full flex items-start">
         <Label name={UserReport.Incident} className="font-bold text-sm w-1/4" />
         <Dropdown
-          options={options}
+          options={UserOptions}
           placeholder="Select the type of fire"
           className="w-3/4"
           onChange={handleIncidentChange}

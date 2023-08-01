@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { MdCloudUpload, MdDelete } from "react-icons/md";
 import { AiFillFileImage } from "react-icons/ai";
+//constants
 import { UserReport } from "../../../utils/constants";
 
 interface UploaderProps {

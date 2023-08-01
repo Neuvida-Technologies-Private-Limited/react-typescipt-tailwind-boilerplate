@@ -1,148 +1,104 @@
-import React, { ReactNode } from "react";
-import {ConfirmDropdown} from "../index";
+import React from "react";
 import { Table } from "antd";
-import type { ColumnsType, TableProps } from "antd/es/table";
-import { DispatchDashboard } from "../../../utils/constants";
+import type { ColumnsType } from "antd/es/table";
+//components
+import { DispatchModal, Step } from "../index";
+//constants
+import { TableConst } from "../../../utils/constants";
 
 interface DataType {
   key: React.Key;
   incident: string;
   location: string;
   status: string;
-  setStatus: ReactNode;
+  ticket_id: string;
 }
-const options = [
+
+interface DispatchTableProp {
+  data: DataType[];
+}
+const Index: React.FC<DispatchTableProp> = ({ data }) => {
+  const columns: ColumnsType<DataType> = [
     {
-      value: 'resolved',
-      label: 'Resolved',
-      email: '',
+      title: `${TableConst.Incident}`,
+      dataIndex: "report",
+      filters: [
+        {
+          text: `${TableConst.FireBeginning}`,
+          value: `${TableConst.FireBeginning}`,
+        },
+        {
+          text: `${TableConst.FireSmoke}`,
+          value: `${TableConst.FireSmoke}`,
+        },
+        {
+          text: `${TableConst.Extremefire}`,
+          value: `${TableConst.Extremefire}`,
+        },
+      ],
+      filterMode: "tree",
+      filterSearch: true,
+      onFilter: (value: string | number | boolean, record: DataType) =>
+        record.incident.startsWith(String(value)),
+      width: "20%",
     },
     {
-      value: 'false_alarm',
-      label: 'False_Alarm',
-      email: '',
+      title: `${TableConst.Location}`,
+      dataIndex: "location",
+      width: "25%",
+    },
+    {
+      title: `${TableConst.Status}`,
+      dataIndex: "status",
+      filters: [
+        {
+          text: `${TableConst.Created}`,
+          value: `${TableConst.Created}`,
+        },
+        {
+          text: `${TableConst.Assigned}`,
+          value: `${TableConst.Assigned}`,
+        },
+        {
+          text: `${TableConst.Resolved}`,
+          value: `${TableConst.Resolved}`,
+        },
+        {
+          text: `${TableConst.False}`,
+          value: `${TableConst.False}`,
+        },
+      ],
+      onFilter: (value: string | number | boolean, record: DataType) =>
+        record.status.startsWith(String(value)),
+      filterSearch: true,
+      width: "15%",
+    },
+    {
+      title: `${TableConst.Options}`,
+      dataIndex: "dispatchModal",
+      filterSearch: true,
+      width: "20%",
+      render: (_, record) => {
+        return <DispatchModal ticketID={record.ticket_id}/>;
+      },
+    },
+    {
+      title: `${TableConst.Activity}`,
+      key: "operation",
+      width: "20%",
+      render: () => {
+        return <Step />;
+      },
     },
   ];
-
-
-const columns: ColumnsType<DataType> = [
-  {
-    title: "Incident",
-    dataIndex: "incident",
-    filters: [
-      {
-        text: "Fire in beginning",
-        value: "Fire in beginning",
-      },
-      {
-        text: "Fire with smoke",
-        value: "Fire with smoke",
-      },
-      {
-        text: "Extreme fire",
-        value: "Extreme fire",
-      },
-    ],
-    filterMode: "tree",
-    filterSearch: true,
-    onFilter: (value: string | number | boolean, record: DataType) =>
-      record.incident.startsWith(String(value)),
-    width: "30%",
-  },
-  {
-    title: "Location",
-    dataIndex: "location",
-    filters: [
-      {
-        text: "",
-        value: "",
-      },
-      {
-        text: "",
-        value: "",
-      },
-      {
-        text: "",
-        value: "",
-      },
-    ],
-    filterMode: "tree",
-    filterSearch: true,
-    onFilter: (value: string | number | boolean, record: DataType) =>
-      record.incident.startsWith(String(value)),
-    width: "30%",
-  },
-  {
-    title: "Status",
-    dataIndex: "status",
-    filters: [
-      {
-        text: "London",
-        value: "London",
-      },
-      {
-        text: "New York",
-        value: "New York",
-      },
-    ],
-    onFilter: (value: string | number | boolean, record: DataType) =>
-      record.status.startsWith(String(value)),
-    filterSearch: true,
-    width: "10%",
-  },
-  {
-    title: "Set Status",
-    dataIndex: "setStatus",
-    filterSearch: true,
-    width: "30%",
-  },
-];
-
-const data: DataType[] = [
-  {
-    key: "1",
-    incident: "Fire in beginning",
-    location: "",
-    status: "Pending",
-    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
-  },
-  {
-    key: "2",
-    incident: "Fire with smoke",
-    location: "",
-    status: "Pending",
-    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
-  },
-  {
-    key: "3",
-    incident: "Extreme Fire",
-    location: "",
-    status: "Active",
-    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
-  },
-  {
-    key: "4",
-    incident: "Fire with smoke",
-    location: "",
-    status: "Active",
-    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
-  },
-];
-
-const onChange: TableProps<DataType>["onChange"] = (
-  pagination,
-  filters,
-  sorter,
-  extra
-) => {};
-
-const Index: React.FC = () => (
-  <Table
-    columns={columns}
-    dataSource={data}
-    onChange={onChange}
-    className="w-full mt-2"
-  />
-);
+  return (
+    <Table
+      columns={columns}
+      dataSource={data}
+      className="w-full mt-2"
+      scroll={{ y: 350 }}
+    />
+  );
+};
 
 export default Index;

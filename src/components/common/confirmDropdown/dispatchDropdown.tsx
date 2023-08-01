@@ -10,7 +10,6 @@ import { ToastContainer, toast } from "react-toastify";
 interface OptionItems {
   value: string;
   label: string;
-  email: string;
 }
 
 interface DropdownProps {
@@ -28,10 +27,10 @@ const Dropdown: React.FC<DropdownProps> = ({
 }) => {
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
 
-  const updateTicketStatus = async () => {
+  const updateTicketStatus = async (value:string) => {
     const updateTicketParams = {
       ticket_id: ticketID,
-      status: "ASSIGNED",
+      status: value,
     };
     try {
       await UpdateTicketStatus(updateTicketParams);
@@ -41,33 +40,13 @@ const Dropdown: React.FC<DropdownProps> = ({
     }
   };
 
-  const handleAssignDispatchCenter = async (value:string) => {
-    const selectedOption = options.find(
-      (option) => option.value === value
-    );
-    if (selectedOption) {
-      const assignParams = {
-        email: selectedOption.email,
-        ticket_id: ticketID,
-      };
-      try {
-        await AssignDispatchCenter(assignParams);
-        toast.success("Successfully assigned");
-        updateTicketStatus();
-      } catch (error: any) {
-        const errorMessage = error.error.message;
-        toast.error(errorMessage);
-      }
-    }
-  };
-
   const handleChange = (value: string) => {
     Modal.confirm({
       title: "Confirmation",
       content: `Are you sure you want to select "${value}"?`,
       onOk() {
         setSelectedValue(value);
-        handleAssignDispatchCenter(value);
+        updateTicketStatus(value);
       },
       onCancel() {
         // Handle when "Cancel" is clicked or modal is closed

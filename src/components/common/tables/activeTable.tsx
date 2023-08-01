@@ -1,6 +1,10 @@
 import React from "react";
 import { Table } from "antd";
-import type { ColumnsType, TableProps } from "antd/es/table";
+import type { ColumnsType } from "antd/es/table";
+//constants
+import {TableConst} from "../../../utils/constants"
+//components
+import Step from "../step";
 
 interface DataType {
   key: React.Key;
@@ -12,32 +16,32 @@ interface DataType {
 
 const columns: ColumnsType<DataType> = [
   {
-    title: "Incident",
+    title: `${TableConst.Incident}`,
     dataIndex: "report",
     filters: [
       {
-        text: "Fire in Beginning",
-        value: "Fire in Beginning",
+        text: `${TableConst.FireBeginning}`,
+        value: `${TableConst.FireBeginning}`,
       },
       {
-        text: "Fire with smoke",
-        value: "Fire with smoke",
+        text: `${TableConst.FireSmoke}`,
+        value: `${TableConst.FireSmoke}`,
       },
       {
-        text: "Extreme fire",
-        value: "Extreme fire",
+        text: `${TableConst.Extremefire}`,
+        value: `${TableConst.Extremefire}`,
       },
     ],
     filterMode: "tree",
     filterSearch: true,
     onFilter: (value: string | number | boolean, record: DataType) =>
       record.report.startsWith(String(value)),
-    width: "40%",
+    width: "20%",
   },
   {
-    title: "Uploaded Image",
+    title: `${TableConst.UploadedImage}`,
     dataIndex: "user_image",
-    width: "40%",
+    width: "18%",
     render: (userImage: string) =>
       userImage ? (
         <img
@@ -48,45 +52,43 @@ const columns: ColumnsType<DataType> = [
       ) : null,
   },
   {
-    title: "Location",
+    title: `${TableConst.Location}`,
     dataIndex: "location",
-    filters: [
-      {
-        text: "",
-        value: "",
-      },
-      {
-        text: "",
-        value: "",
-      },
-      {
-        text: "",
-        value: "",
-      },
-    ],
-    filterMode: "tree",
-    filterSearch: true,
-    onFilter: (value: string | number | boolean, record: DataType) =>
-      record.location.startsWith(String(value)),
-    width: "40%",
+    width: "27%",
   },
   {
-    title: "Status",
+    title: `${TableConst.Status}`,
     dataIndex: "status",
     filters: [
       {
-        text: "London",
-        value: "London",
+        text: `${TableConst.Created}`,
+        value: `${TableConst.Created}`,
       },
       {
-        text: "New York",
-        value: "New York",
+        text: `${TableConst.Assigned}`,
+        value: `${TableConst.Assigned}`,
+      },
+      {
+        text: `${TableConst.Resolved}`,
+        value: `${TableConst.Resolved}`,
+      },
+      {
+        text: `${TableConst.False}`,
+        value: `${TableConst.False}`,
       },
     ],
     onFilter: (value: string | number | boolean, record: DataType) =>
       record.status.startsWith(String(value)),
     filterSearch: true,
-    width: "40%",
+    width: "15%",
+  },
+  {
+    title: `${TableConst.Activity}`,
+    key: "operation",
+    width: '20%',
+    render: () => {
+      return <Step />;
+    },
   },
 ];
 
@@ -94,19 +96,12 @@ interface ActiveTableProp {
   data: DataType[]
 }
 
-const onChange: TableProps<DataType>["onChange"] = (
-  pagination,
-  filters,
-  sorter,
-  extra
-) => {};
-
 const Index: React.FC<ActiveTableProp> = ({data}) => (
   <Table
     columns={columns}
     dataSource={data}
-    onChange={onChange}
     className="w-full"
+    scroll={{ y: 300 }}
   />
 );
 
