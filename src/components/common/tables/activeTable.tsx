@@ -41,7 +41,7 @@ const columns: ColumnsType<DataType> = [
   {
     title: `${TableConst.UploadedImage}`,
     dataIndex: "user_image",
-    width: "20%",
+    width: "18%",
     render: (userImage: string) =>
       userImage ? (
         <img
@@ -54,7 +54,7 @@ const columns: ColumnsType<DataType> = [
   {
     title: `${TableConst.Location}`,
     dataIndex: "location",
-    width: "30%",
+    width: "27%",
   },
   {
     title: `${TableConst.Status}`,
@@ -80,7 +80,7 @@ const columns: ColumnsType<DataType> = [
     onFilter: (value: string | number | boolean, record: DataType) =>
       record.status.startsWith(String(value)),
     filterSearch: true,
-    width: "10%",
+    width: "15%",
   },
   {
     title: `${TableConst.Activity}`,
@@ -101,6 +101,7 @@ const Index: React.FC<ActiveTableProp> = ({data}) => (
     columns={columns}
     dataSource={data}
     className="w-full"
+    scroll={{ y: 300 }}
   />
 );
 

@@ -1,11 +1,9 @@
 import React from "react";
 import { Header, Footer, SideBar } from "../components/common";
 import { Outlet } from "react-router-dom";
+import { DispatchCenterItems } from "../utils/constants";
 
-const items = [
-  { key: "/dispatch_center", label: "Dashboard" },
-  { key: "/dispatch_center/profile", label: "Profile" },
-];
+
 
 const DispatchCenter: React.FC = () => {
   return (
@@ -15,7 +13,7 @@ const DispatchCenter: React.FC = () => {
         heading="Dispatch Center's Dashboard"
       />
       <div className="flex">
-        <SideBar items={items} />
+        <SideBar items={DispatchCenterItems} />
         <Outlet />
       </div>
       <Footer />

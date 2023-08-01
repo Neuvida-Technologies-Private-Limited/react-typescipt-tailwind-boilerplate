@@ -69,17 +69,28 @@ export enum TableConst {
   False = "FALSE_ALARM",
   Resolved = "RESOLVED",
 }
+export const UserItems = [
+  { key: "/user", label: "Create a ticket" },
+  { key: "/user/history", label: "History" },
+  { key: "/user/profile", label: "Profile" },
+];
+export const FireFighterItems = [
+  { key: "/firefighter", label: "Dashboard" },
+  { key: "/firefighter/profile", label: "Profile" },
+];
+export const DispatchCenterItems = [
+  { key: "/dispatch_center", label: "Dashboard" },
+  { key: "/dispatch_center/profile", label: "Profile" },
+];
 
 export const options =  [
   {
-    value: 'resolved',
-    label: 'Resolved',
-    email: '',
+    value: 'RESOLVED',
+    label: 'RESOLVED',
   },
   {
-    value: 'false_alarm',
-    label: 'False_Alarm',
-    email: '',
+    value: 'FALSE_ALARM',
+    label: 'FALSE_ALARM',
   },
 ];
 export const UserOptions = [

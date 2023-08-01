@@ -138,7 +138,7 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
         columns={columns}
         dataSource={data}
         className="w-full mt-2 text-xs"
-        scroll={{ x: "calc(300px + 60%)", y: 350 }}
+        scroll={{ y: 300 }}
       />
       <ToastContainer />
     </div>
