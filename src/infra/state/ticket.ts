@@ -14,5 +14,6 @@ export const ticketState = atom({
     key: 'getTicket-state',
     default: {
         ticket_history: [],
+        imageData: '',
     }
 })

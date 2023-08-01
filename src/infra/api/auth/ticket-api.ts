@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import axiosClientProtected from "../axios-client/axios-client-protected";
 import  axiosClientCreateTicketProtected from "../axios-client/axios-client-create-ticket-protected";
-import { CreateTicketModel } from "./types";
+import { CreateTicketModel,  UpdateTicketStatusModel } from "./types";
 import { ticketRoutes } from "./routes";
 
 //create ticket
@@ -24,3 +24,13 @@ export const GetTicket = async () => {
     return Promise.reject(error);
   }
 };
+
+export const UpdateTicketStatus = async (model: UpdateTicketStatusModel) => {
+  await axiosClientProtected
+    .post(ticketRoutes.UPDATE_TICKET_STATUS, model)
+    .then((response: any) => {
+    })
+    .catch((error: AxiosError) => {
+      return Promise.reject(error);
+    });
+}

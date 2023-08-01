@@ -15,10 +15,12 @@ const options = [
     {
       value: 'resolved',
       label: 'Resolved',
+      email: '',
     },
     {
       value: 'false_alarm',
       label: 'False_Alarm',
+      email: '',
     },
   ];
 
@@ -102,28 +104,28 @@ const data: DataType[] = [
     incident: "Fire in beginning",
     location: "",
     status: "Pending",
-    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2"/>,
+    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
   },
   {
     key: "2",
     incident: "Fire with smoke",
     location: "",
     status: "Pending",
-    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2"/>,
+    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
   },
   {
     key: "3",
     incident: "Extreme Fire",
     location: "",
     status: "Active",
-    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2"/>,
+    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
   },
   {
     key: "4",
     incident: "Fire with smoke",
     location: "",
     status: "Active",
-    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2"/>,
+    setStatus: <ConfirmDropdown options={options} placeholder={DispatchDashboard.Select} className="w-1/2" ticketID=""/>,
   },
 ];
 
