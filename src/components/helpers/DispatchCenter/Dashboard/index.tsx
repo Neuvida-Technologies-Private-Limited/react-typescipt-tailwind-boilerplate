@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoMdRefresh } from "react-icons/io";
 //components
-import { Label, IconButton, DispatchTable } from "../../../common";
+import { Label, IconButton, DispatchTable, InActiveTable } from "../../../common";
 //constants
 import { DispatchDashboard } from "../../../../utils/constants";
 //states
@@ -29,7 +29,7 @@ const History = () => {
     {
       key: "2",
       label: `Resolved`,
-      children: 'Resolved Tickets',
+      children: <InActiveTable data={ticket_history}/>,
     },
   ];
 

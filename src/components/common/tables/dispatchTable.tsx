@@ -12,6 +12,8 @@ interface DataType {
   location: string;
   status: string;
   ticket_id: string;
+  created_at: string;
+  modified_at: string;
 }
 
 interface DispatchTableProp {
@@ -86,15 +88,18 @@ const Index: React.FC<DispatchTableProp> = ({ data }) => {
       title: `${TableConst.Activity}`,
       key: "operation",
       width: "20%",
-      render: () => {
-        return <Step />;
+      render: (_, record) => {
+        return <Step ticketID={record.ticket_id} created={record.created_at} modified={record.modified_at} status={record.status}/>;
       },
     },
   ];
+  const filteredData = data.filter(
+    (record) => record.status === 'ASSIGNED' || record.status === 'CREATED'
+  );
   return (
     <Table
       columns={columns}
-      dataSource={data}
+      dataSource={filteredData}
       className="w-full mt-2"
       scroll={{ y: 350 }}
     />

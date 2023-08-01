@@ -29,7 +29,7 @@ const History = () => {
     {
       key: "2",
       label: `Resolved`,
-      children: <InActiveTable />,
+      children: <InActiveTable data={ticket_history}/>,
     },
   ];
 

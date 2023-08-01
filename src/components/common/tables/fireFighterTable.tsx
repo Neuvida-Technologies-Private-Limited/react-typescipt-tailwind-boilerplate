@@ -16,6 +16,8 @@ interface DataType {
   location: string;
   status: string;
   ticket_id: string;
+  created_at: string;
+  modified_at: string;
 }
 interface OptionItems {
   value: string;
@@ -126,17 +128,21 @@ const Index: React.FC<ActiveTableProp> = ({ data }) => {
       title: `${TableConst.Activity}`,
       key: "operation",
       width: 150,
-      render: () => {
-        return <Step />;
+      render: (_, record) => {
+        return <Step ticketID={record.ticket_id} created={record.created_at} modified={record.modified_at} status={record.status}/>;
       },
     },
   ];
 
+  const filteredData = data.filter(
+    (record) => record.status === 'ASSIGNED' || record.status === 'CREATED'
+  );
+
   return (
-    <div className="overflow-x-hidden">
+    <div>
       <Table
         columns={columns}
-        dataSource={data}
+        dataSource={filteredData}
         className="w-full mt-2 text-xs"
         scroll={{ y: 300 }}
       />

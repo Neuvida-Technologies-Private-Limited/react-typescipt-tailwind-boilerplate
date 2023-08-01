@@ -12,6 +12,9 @@ interface DataType {
   user_image: string;
   location: string;
   status: string;
+  ticket_id: string;
+  created_at: string;
+  modified_at: string;
 }
 
 const columns: ColumnsType<DataType> = [
@@ -86,8 +89,8 @@ const columns: ColumnsType<DataType> = [
     title: `${TableConst.Activity}`,
     key: "operation",
     width: '20%',
-    render: () => {
-      return <Step />;
+    render: (_, record) => {
+      return <Step ticketID={record.ticket_id} created={record.created_at} modified={record.modified_at} status={record.status}/>;
     },
   },
 ];
@@ -96,13 +99,18 @@ interface ActiveTableProp {
   data: DataType[]
 }
 
-const Index: React.FC<ActiveTableProp> = ({data}) => (
+const Index: React.FC<ActiveTableProp> = ({data}) => {
+  const filteredData = data.filter(
+    (record) => record.status === 'ASSIGNED' || record.status === 'CREATED'
+  );
+  return(
   <Table
     columns={columns}
-    dataSource={data}
+    dataSource={filteredData}
     className="w-full"
     scroll={{ y: 300 }}
   />
-);
+  );
+};
 
 export default Index;

@@ -1,96 +1,87 @@
-import React from 'react';
-import { Table } from 'antd';
-import type { ColumnsType, TableProps } from 'antd/es/table';
+import React from "react";
+import { Table } from "antd";
+import type { ColumnsType, TableProps } from "antd/es/table";
+import { TableConst } from "../../../utils/constants";
+import Step from "../step";
 
 interface DataType {
   key: React.Key;
-  incident: string;
+  report: string;
   location: string;
   status: string;
+  ticket_id:string;
+  created_at: string;
+  modified_at: string;
 }
 
 const columns: ColumnsType<DataType> = [
   {
-    title: 'Incident',
-    dataIndex: 'incident',
+    title: `${TableConst.Incident}`,
+    dataIndex: "report",
     filters: [
       {
-        text: 'Fire in beginning',
-        value: 'Fire in beginning',
+        text: `${TableConst.FireBeginning}`,
+        value: `${TableConst.FireBeginning}`,
       },
       {
-        text: 'Fire with smoke',
-        value: 'Fire with smoke',
+        text: `${TableConst.FireSmoke}`,
+        value: `${TableConst.FireSmoke}`,
       },
       {
-        text: 'Extreme fire',
-        value: 'Extreme fire',
+        text: `${TableConst.Extremefire}`,
+        value: `${TableConst.Extremefire}`,
       },
     ],
-    filterMode: 'tree',
+    filterMode: "tree",
     filterSearch: true,
-    onFilter: (value: string | number | boolean, record: DataType) => record.incident.startsWith(String(value)),
-    width: '40%',
+    onFilter: (value: string | number | boolean, record: DataType) =>
+      record.report.startsWith(String(value)),
+    width: "20%",
   },
   {
-    title: 'Location',
-    dataIndex: 'location',
-    filters: [
-      {
-        text: '',
-        value: '',
-      },
-      {
-        text: '',
-        value: '',
-      },
-      {
-        text: '',
-        value: '',
-      },
-    ],
-    filterMode: 'tree',
-    filterSearch: true,
-    onFilter: (value: string | number | boolean, record: DataType) => record.incident.startsWith(String(value)),
-    width: '40%',
+    title: `${TableConst.Location}`,
+    dataIndex: "location",
+    width: "30%",
   },
   {
-    title: 'Status',
-    dataIndex: 'status',
+    title: `${TableConst.Status}`,
+    dataIndex: "status",
     filters: [
       {
-        text: 'London',
-        value: 'London',
+        text: `${TableConst.Resolved}`,
+        value: `${TableConst.Resolved}`,
       },
       {
-        text: 'New York',
-        value: 'New York',
+        text: `${TableConst.False}`,
+        value: `${TableConst.False}`,
       },
     ],
-    onFilter: (value: string | number | boolean, record: DataType) => record.status.startsWith(String(value)),
+    onFilter: (value: string | number | boolean, record: DataType) =>
+      record.status.startsWith(String(value)),
     filterSearch: true,
-    width: '40%',
+    width: "15%",
+  },
+  {
+    title: `${TableConst.Activity}`,
+    key: "operation",
+    width: '35%',
+    render: (_, record) => {
+      return <Step ticketID={record.ticket_id} created={record.created_at} modified={record.modified_at} status={record.status}/>;
+    },
   },
 ];
 
-const data: DataType[] = [
-  {
-    key: '1',
-    incident: 'Fire in beginning',
-    location: '',
-    status: 'Inactive',
-  },
-  {
-    key: '2',
-    incident: 'Fire with smoke',
-    location: '',
-    status: 'Inactive',
-  },
-];
+interface InActiveTableProp {
+  data: DataType[];
+}
 
-const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {
+const Index: React.FC<InActiveTableProp> = ({ data }) => {
+  const filteredData = data.filter(
+    (record) => record.status === "RESOLVED" || record.status === "FALSE_ALARM"
+  );
+  return (
+    <Table columns={columns} dataSource={filteredData} className="w-full" scroll={{ y: 300 }}/>
+  );
 };
-
-const Index: React.FC = () => <Table columns={columns} dataSource={data} onChange={onChange} className='w-full'/>;
 
 export default Index;
