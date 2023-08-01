@@ -41,9 +41,9 @@ const Dropdown: React.FC<DropdownProps> = ({
     }
   };
 
-  const handleOK = async () => {
+  const handleOK = async (value:string) => {
     const selectedOption = options.find(
-      (option) => option.value === selectedValue
+      (option) => option.value === value
     );
     if (selectedOption) {
       const assignParams = {
@@ -67,7 +67,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       content: `Are you sure you want to select "${value}"?`,
       onOk() {
         setSelectedValue(value);
-        handleOK();
+        handleOK(value);
       },
       onCancel() {
         // Handle when "Cancel" is clicked or modal is closed
