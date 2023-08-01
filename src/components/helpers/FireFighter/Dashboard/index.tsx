@@ -12,11 +12,13 @@ import "react-toastify/dist/ReactToastify.css";
 const onChange = (key: string) => {};
 
 const History = () => {
+  const [state, setState] = useRecoilState(ticketState);
+  const { ticket_history } = state;
   const items: TabsProps["items"] = [
     {
       key: "1",
       label: `Active`,
-      children: <FireFighterTable />,
+      children: <FireFighterTable data={ticket_history}/>,
     },
     {
       key: "2",
@@ -26,12 +28,21 @@ const History = () => {
   ];
 
   const handleRefresh = async () => {
+    try {
+      const res = await GetTicket();
+      setState((old) => ({
+        ...old,
+        ticket_history: res.ticket_history,
+      }));
+    } catch (error: any) {
+      const errorMessage = error.error.message;
+      toast.warn(errorMessage);
+    }
   };
-
   useEffect(() => {
     handleRefresh();
-  });
-
+  }, []);
+  
   return (
     <div className="px-4 py-2 w-5/6">
       <div className="flex justify-between items-start">

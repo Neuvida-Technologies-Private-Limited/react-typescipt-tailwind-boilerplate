@@ -30,6 +30,7 @@ const History = () => {
   const handleRefresh = async () => {
     try {
       const res = await GetTicket();
+
       setState((old) => ({
         ...old,
         ticket_history: res.ticket_history,
@@ -42,7 +43,7 @@ const History = () => {
 
   useEffect(() => {
     handleRefresh();
-  });
+  },[]);
 
   return (
     <div className="px-4 py-2 w-5/6">

@@ -5,7 +5,7 @@ import type { ColumnsType, TableProps } from "antd/es/table";
 interface DataType {
   key: React.Key;
   report: string;
-  image: File | null;
+  user_image: string;
   location: string;
   status: string;
 }
@@ -38,6 +38,14 @@ const columns: ColumnsType<DataType> = [
     title: "Uploaded Image",
     dataIndex: "user_image",
     width: "40%",
+    render: (userImage: string) =>
+      userImage ? (
+        <img
+          src={`data:image/jpeg;base64,${userImage}`}
+          alt="Uploaded"
+          style={{ maxWidth: "100px", maxHeight: "100px" }}
+        />
+      ) : null,
   },
   {
     title: "Location",
